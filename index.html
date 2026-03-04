@@ -193,7 +193,7 @@
         .member-season { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
 
         /* Advantage badges on player names */
-        .advantage-badges { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: middle; }
+        .advantage-badges { display: inline-flex; gap: 3px; margin-right: 5px; vertical-align: middle; flex-shrink: 0; }
         .adv-badge {
             display: inline-flex; align-items: center; justify-content: center;
             width: 20px; height: 20px; border-radius: 50%; font-size: 0.65rem;
@@ -692,7 +692,7 @@
                                         <span class="elim-x">&#10006;</span>
                                     </div>
                                     <div class="member-info">
-                                        <div class="member-name">${m.name}${renderAdvBadges(m.id)}</div>
+                                        <div class="member-name">${renderAdvBadges(m.id)}${m.name}</div>
                                         <div class="member-season">${m.season}</div>
                                         ${isElim ? `<div class="elim-method">Ep ${elimData.episode}: ${elimData.method}</div>` : ''}
                                     </div>
