@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survivor 50 Draft Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #141420;
+            --bg-card-hover: #1a1a2e;
+            --flame-orange: #ff6b35;
+            --flame-yellow: #ffa726;
+            --flame-red: #e53935;
+            --tropical-teal: #26c6da;
+            --tropical-green: #00e676;
+            --text-primary: #f5f5f5;
+            --text-secondary: #9e9eb8;
+            --text-muted: #5c5c7a;
+            --eliminated: #3a3a4a;
+            --border: #2a2a3e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 107, 53, 0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(38, 198, 218, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(224, 64, 251, 0.02) 0%, transparent 50%);
+            animation: bgPulse 20s ease-in-out infinite;
+            z-index: 0; pointer-events: none;
+        }
+        @keyframes bgPulse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-2%, -2%) scale(1.05); }
+        }
+
+        /* Header */
+        .hero {
+            position: relative; z-index: 1; text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(255, 107, 53, 0.08) 0%, transparent 100%);
+        }
+        .hero-badge {
+            display: inline-block; padding: 0.35rem 1rem;
+            background: rgba(255, 107, 53, 0.15); border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--flame-orange);
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 5.5rem);
+            letter-spacing: 0.05em; line-height: 0.95;
+            background: linear-gradient(135deg, var(--flame-yellow), var(--flame-orange), var(--flame-red));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .hero h1 span {
+            display: block; font-size: 0.4em; letter-spacing: 0.2em;
+            background: linear-gradient(135deg, var(--text-secondary), var(--text-primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-info-stack {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 0.6rem; margin-top: 1.25rem;
+        }
+        .stakes-banner {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 167, 38, 0.08); border: 1px solid rgba(255, 167, 38, 0.2);
+            border-radius: 12px; font-size: 0.9rem; color: var(--flame-yellow);
+        }
+        .stakes-banner .icon { font-size: 1.2rem; }
+        .next-episode-banner {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(38, 198, 218, 0.08); border: 1px solid rgba(38, 198, 218, 0.2);
+            border-radius: 12px; font-size: 0.8rem; color: var(--tropical-teal);
+        }
+        .update-info {
+            font-size: 0.7rem; color: var(--text-muted);
+        }
+
+        /* Standings Bar */
+        .standings-bar {
+            position: relative; z-index: 1;
+            display: flex; justify-content: center; gap: 0.5rem;
+            padding: 1.5rem; flex-wrap: wrap;
+        }
+        .standing-pill {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.2rem; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 50px;
+            font-size: 0.85rem; font-weight: 600; cursor: default;
+        }
+        .standing-pill .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .standing-pill .pct { color: var(--text-secondary); font-weight: 400; margin-left: 0.25rem; }
+
+        /* Main content */
+        .container { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+
+        .section-header {
+            display: flex; align-items: center; gap: 0.75rem;
+            margin-bottom: 1.5rem; margin-top: 2rem;
+        }
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
+            letter-spacing: 0.05em; color: var(--text-primary); white-space: nowrap;
+        }
+        .section-header .line { flex: 1; height: 1px; background: var(--border); }
+
+        /* Probability bars */
+        .prob-container {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;
+        }
+        .prob-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .prob-row:last-child { margin-bottom: 0; }
+        .prob-name { min-width: 100px; font-weight: 600; font-size: 0.95rem; }
+        .prob-bar-track {
+            flex: 1; height: 32px; background: rgba(255,255,255,0.03);
+            border-radius: 8px; overflow: hidden;
+        }
+        .prob-bar-fill {
+            height: 100%; border-radius: 8px;
+            transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex; align-items: center; padding-left: 12px;
+            font-weight: 700; font-size: 0.85rem; color: rgba(0,0,0,0.8);
+        }
+        .prob-value { min-width: 55px; text-align: right; font-weight: 700; font-size: 1.1rem; }
+
+        .rank-badge {
+            width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.75rem; flex-shrink: 0;
+        }
+        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffb300); color: #000; }
+        .rank-2 { background: linear-gradient(135deg, #b0bec5, #78909c); color: #000; }
+        .rank-3 { background: linear-gradient(135deg, #a1887f, #795548); color: #fff; }
+        .rank-4 { background: var(--eliminated); color: var(--text-muted); }
+
+        /* Teams Grid */
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .team-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .team-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+        .team-header {
+            padding: 1.25rem 1.5rem; display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 1px solid var(--border);
+        }
+        .team-name-group { display: flex; align-items: center; gap: 0.75rem; }
+        .team-color-bar { width: 4px; height: 36px; border-radius: 2px; }
+        .team-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.05em; }
+        .team-stats { text-align: right; }
+        .team-odds { font-size: 1.4rem; font-weight: 800; }
+        .team-alive { font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px; }
+        .team-members { padding: 0.75rem; }
+
+        .member-row {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.65rem 0.75rem; border-radius: 10px;
+            transition: all 0.3s; user-select: none;
+        }
+        .member-row:hover { background: rgba(255,255,255,0.03); }
+        .member-row.eliminated { opacity: 0.35; }
+        .member-row.eliminated .member-photo { filter: grayscale(100%); }
+        .member-row.eliminated .member-name { text-decoration: line-through; text-decoration-color: var(--flame-red); }
+
+        .member-photo {
+            width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+            border: 2px solid var(--border); flex-shrink: 0; background: var(--bg-card-hover);
+        }
+        .member-info { flex: 1; min-width: 0; }
+        .member-name { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .member-season { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
+
+        /* Advantage badges on player names */
+        .advantage-badges { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: middle; }
+        .adv-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 20px; height: 20px; border-radius: 50%; font-size: 0.65rem;
+            cursor: help; position: relative;
+        }
+        .adv-badge.idol { background: rgba(255, 215, 0, 0.2); border: 1px solid rgba(255, 215, 0, 0.5); }
+        .adv-badge.disadvantage { background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); }
+        .adv-badge.medevac { background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); }
+
+        .member-odds { font-size: 0.85rem; font-weight: 700; min-width: 45px; text-align: right; }
+        .member-status { width: 20px; text-align: center; flex-shrink: 0; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .status-dot.alive { background: var(--tropical-green); box-shadow: 0 0 6px var(--tropical-green); }
+        .status-dot.eliminated-dot { background: var(--flame-red); }
+
+        .photo-wrapper { position: relative; width: 44px; height: 44px; flex-shrink: 0; }
+        .elim-x {
+            display: none; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); font-size: 1.4rem;
+            color: var(--flame-red); font-weight: 900;
+            text-shadow: 0 0 4px rgba(0,0,0,0.8);
+        }
+        .member-row.eliminated .elim-x { display: block; }
+
+        .elim-method {
+            font-size: 0.65rem; color: var(--flame-red); font-style: italic;
+            margin-top: 1px;
+        }
+
+        /* Advantages Section */
+        .advantages-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;
+        }
+        .advantage-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.25rem; transition: all 0.3s;
+        }
+        .advantage-card:hover { border-color: rgba(255, 215, 0, 0.3); }
+        .advantage-card.used { opacity: 0.4; }
+        .adv-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .adv-icon {
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+        .adv-icon.idol-icon { background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); }
+        .adv-icon.disadvantage-icon { background: rgba(229, 57, 53, 0.15); border: 1px solid rgba(229, 57, 53, 0.4); }
+        .adv-card-title { font-weight: 700; font-size: 0.95rem; }
+        .adv-card-holder {
+            font-size: 0.8rem; margin-top: 2px;
+        }
+        .adv-card-desc {
+            font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
+            padding: 0.75rem; background: rgba(255,255,255,0.02);
+            border-radius: 8px; border-left: 3px solid rgba(255, 215, 0, 0.3);
+        }
+        .adv-card-desc.negative { border-left-color: rgba(229, 57, 53, 0.3); }
+        .adv-status-tag {
+            display: inline-block; padding: 0.2rem 0.6rem; border-radius: 50px;
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-top: 0.5rem;
+        }
+        .adv-status-tag.active { background: rgba(0, 230, 118, 0.15); color: var(--tropical-green); }
+        .adv-status-tag.lost { background: rgba(229, 57, 53, 0.15); color: var(--flame-red); }
+        .adv-status-tag.unknown { background: rgba(255, 167, 38, 0.15); color: var(--flame-yellow); }
+
+        /* Episode Tracker */
+        .episode-tracker {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.5rem; margin-top: 2rem;
+        }
+        .episode-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;
+        }
+        .episode-slot {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 10px; padding: 1rem; text-align: center;
+        }
+        .episode-slot.current { border-color: var(--flame-orange); background: rgba(255, 107, 53, 0.05); }
+        .episode-slot.aired { border-color: var(--border); }
+        .episode-number {
+            font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 0.5rem;
+        }
+        .episode-date { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+        .episode-elim-entry { margin-bottom: 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .episode-elim-entry:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .episode-eliminated { font-weight: 600; font-size: 0.85rem; color: var(--flame-red); }
+        .episode-eliminated.none { color: var(--text-muted); font-weight: 400; font-style: italic; }
+        .episode-method { font-size: 0.65rem; color: var(--text-muted); font-style: italic; margin-top: 0.15rem; }
+        .episode-team { font-size: 0.7rem; margin-top: 0.2rem; color: var(--text-secondary); }
+
+        .odds-note {
+            font-size: 0.75rem; color: var(--text-muted);
+            text-align: center; margin-top: 0.75rem; font-style: italic;
+        }
+        .leader-crown { font-size: 1rem; margin-left: 0.25rem; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 2rem; right: 2rem;
+            padding: 0.75rem 1.25rem; background: var(--bg-card);
+            border: 1px solid var(--flame-orange); border-radius: 10px;
+            font-size: 0.85rem; z-index: 100;
+            transform: translateY(100px); opacity: 0; transition: all 0.3s;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        footer {
+            position: relative; z-index: 1; text-align: center;
+            padding: 3rem 1.5rem; color: var(--text-muted);
+            font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 3rem;
+        }
+
+        @keyframes fireGlow {
+            0%, 100% { box-shadow: 0 0 8px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 16px rgba(255, 107, 53, 0.6); }
+        }
+        .team-card.leader { animation: fireGlow 3s ease-in-out infinite; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 2rem 1rem 1.5rem; }
+            .hero h1 { font-size: 3rem; }
+            .teams-grid { grid-template-columns: 1fr; }
+            .advantages-grid { grid-template-columns: 1fr; }
+            .prob-row { flex-wrap: wrap; }
+            .prob-name { min-width: 80px; font-size: 0.85rem; }
+            .standings-bar { gap: 0.35rem; }
+            .standing-pill { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <header class="hero">
+        <div class="hero-badge">Season 50 &middot; All-Stars &middot; 2026</div>
+        <h1>
+            SURVIVOR 50
+            <span>Snake Draft Tracker</span>
+        </h1>
+        <div class="hero-info-stack">
+            <div class="stakes-banner">
+                <span class="icon">&#127860;</span>
+                <span><strong>Stakes:</strong> New Uchi Restaurant Dinner &mdash; Losers pay for the Winner</span>
+            </div>
+            <div class="next-episode-banner" id="nextEpisodeBanner"></div>
+            <div class="update-info" id="updateInfo"></div>
+        </div>
+    </header>
+
+    <div class="standings-bar" id="standingsBar"></div>
+
+    <div class="container">
+        <!-- Win Probability -->
+        <div class="section-header">
+            <h2>Win Probability</h2>
+            <div class="line"></div>
+        </div>
+        <div class="prob-container" id="probContainer"></div>
+
+        <!-- Teams -->
+        <div class="section-header">
+            <h2>Draft Teams</h2>
+            <div class="line"></div>
+        </div>
+        <div class="teams-grid" id="teamsGrid"></div>
+
+        <!-- Advantages & Idols -->
+        <div class="section-header">
+            <h2>Advantages &amp; Idols</h2>
+            <div class="line"></div>
+        </div>
+        <div class="advantages-grid" id="advantagesGrid"></div>
+
+        <!-- Episode Tracker -->
+        <div class="section-header">
+            <h2>Episode Tracker</h2>
+            <div class="line"></div>
+        </div>
+        <div class="episode-tracker">
+            <div class="episode-grid" id="episodeGrid"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <footer>
+        <p>Survivor 50 Snake Draft Tracker &middot; Stakes: New Uchi Dinner</p>
+        <p style="margin-top: 0.5rem;">Odds based on DraftKings power rankings &amp; betting projections. Updated after each episode.</p>
+        <p style="margin-top: 0.25rem;">Page auto-refreshes Thursdays at 12:00 AM ET after new episodes air.</p>
+    </footer>
+
+    <script>
+    // ==================== CONFIGURATION ====================
+    const TEAMS = {
+        lizzy: { name: "Team Lizzy", color: "#e040fb", colorLight: "rgba(224, 64, 251, 0.15)" },
+        tanner: { name: "Team Tanner", color: "#29b6f6", colorLight: "rgba(41, 182, 246, 0.15)" },
+        nick: { name: "Team Nick", color: "#66bb6a", colorLight: "rgba(102, 187, 106, 0.15)" },
+        casey: { name: "Team Casey", color: "#ffa726", colorLight: "rgba(255, 167, 38, 0.15)" }
+    };
+
+    const PHOTO_BASE = "https://entertainmentnow.com/wp-content/uploads/2026/01/survivor-season-50-cast-spoilers-first-photos-";
+
+    // ==================== CONTESTANT DATA ====================
+    // Odds updated after Episode 1 based on DraftKings power rankings
+    const CONTESTANTS = [
+        // Team Lizzy
+        { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 2.5, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
+        { id: "ozzy", name: "Ozzy Lusth", team: "lizzy", season: "Cook Islands, Micro, SP, GC", odds: 4.0, photo: PHOTO_BASE + "ozzy-lutsh.jpg", initials: "OL" },
+        { id: "chrissy", name: "Chrissy Hofbeck", team: "lizzy", season: "Heroes vs. Healers vs. Hustlers", odds: 4.5, photo: PHOTO_BASE + "chrissy-hofbeck.jpg", initials: "CH" },
+        { id: "angelina", name: "Angelina Keeley", team: "lizzy", season: "David vs. Goliath", odds: 4.0, photo: PHOTO_BASE + "angelina-keeley.jpg", initials: "AK" },
+        { id: "colby", name: "Colby Donaldson", team: "lizzy", season: "Outback, All-Stars, HvV", odds: 3.5, photo: PHOTO_BASE + "colby-donaldson.jpg", initials: "CD" },
+        { id: "jenna", name: "Jenna Lewis", team: "lizzy", season: "Borneo, All-Stars", odds: 0, photo: PHOTO_BASE + "jenna-lewis-dougherty.jpg", initials: "JL" },
+
+        // Team Tanner
+        { id: "aubry", name: "Aubry Bracco", team: "tanner", season: "Kaoh Rong, GC, Edge of Extinction", odds: 3.0, photo: PHOTO_BASE + "aubry-bracco.jpg", initials: "AB" },
+        { id: "joe", name: "Joe Hunter", team: "tanner", season: "Season 48", odds: 3.5, photo: PHOTO_BASE + "joe-hunter.jpg", initials: "JH" },
+        { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 3.5, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
+        { id: "coach", name: "Coach Wade", team: "tanner", season: "Tocantins, HvV, South Pacific", odds: 3.0, photo: PHOTO_BASE + "benjamin-coach-wade.jpg", initials: "CW" },
+        { id: "stephanie", name: "Stephenie LaGrossa", team: "tanner", season: "Palau, Guatemala, HvV", odds: 3.0, photo: PHOTO_BASE + "stephanie-lagrossa-kendrick.jpg", initials: "SL" },
+        { id: "savannah", name: "Savannah Louie", team: "tanner", season: "Season 49 (Winner)", odds: 5.0, photo: PHOTO_BASE + "savannah-louie.jpg", initials: "SV" },
+
+        // Team Nick
+        { id: "dee", name: "Dee Valladares", team: "nick", season: "Season 45 (Winner)", odds: 7.0, photo: PHOTO_BASE + "dee-valladares.jpg", initials: "DV" },
+        { id: "jonathan", name: "Jonathan Young", team: "nick", season: "Season 42", odds: 4.5, photo: PHOTO_BASE + "jonathan-young.jpg", initials: "JY" },
+        { id: "rizo", name: "Rizo Velovic", team: "nick", season: "Season 49", odds: 4.0, photo: PHOTO_BASE + "rizo-velovic.jpg", initials: "RV" },
+        { id: "q", name: "Q Burdette", team: "nick", season: "Season 46", odds: 4.0, photo: PHOTO_BASE + "quintavius-q-burdette.jpg", initials: "QB" },
+        { id: "kyle", name: "Kyle Fraser", team: "nick", season: "Season 48 (Winner)", odds: 0, photo: PHOTO_BASE + "kyle-fraser.jpg", initials: "KF" },
+        { id: "genevieve", name: "Genevieve Mushaluk", team: "nick", season: "Season 47", odds: 6.0, photo: PHOTO_BASE + "genevieve-mushaluk.jpg", initials: "GM" },
+
+        // Team Casey
+        { id: "christian", name: "Christian Hubicki", team: "casey", season: "David vs. Goliath", odds: 6.5, photo: PHOTO_BASE + "christian-hubicki.jpg", initials: "CH" },
+        { id: "charlie", name: "Charlie Davis", team: "casey", season: "Season 46", odds: 6.0, photo: PHOTO_BASE + "charlie-davis.jpg", initials: "CD" },
+        { id: "mike", name: "Mike White", team: "casey", season: "David vs. Goliath", odds: 4.0, photo: PHOTO_BASE + "mike-white.jpg", initials: "MW" },
+        { id: "emily", name: "Emily Flippen", team: "casey", season: "Season 45", odds: 5.0, photo: PHOTO_BASE + "emily-flippen.jpg", initials: "EF" },
+        { id: "kamilla", name: "Kamila Karthigesu", team: "casey", season: "Season 48", odds: 4.5, photo: PHOTO_BASE + "kamilla-karthigesu.jpg", initials: "KK" },
+        { id: "tiff", name: "Tiffany Ervin", team: "casey", season: "Season 46", odds: 4.5, photo: PHOTO_BASE + "tiffany-ervin.jpg", initials: "TE" }
+    ];
+
+    // ==================== EPISODE DATA ====================
+    // Updated after each episode airs on Wednesday
+    const EPISODES = [
+        {
+            number: 1,
+            airDate: "2026-02-25",
+            title: "Three-Hour Premiere",
+            eliminations: [
+                { id: "jenna", method: "Voted Out", details: "Unanimously voted out by Cila tribe. Voted for Cirie but was blindsided." },
+                { id: "kyle", method: "Medical Evacuation", details: "Medically evacuated from the game due to injury." }
+            ]
+        }
+        // Future episodes will be added here as they air:
+        // { number: 2, airDate: "2026-03-04", title: "Episode 2", eliminations: [{ id: "...", method: "Voted Out", details: "..." }] },
+    ];
+
+    const TOTAL_EPISODES = 14;
+
+    // ==================== ADVANTAGES & IDOLS ====================
+    const ADVANTAGES = [
+        {
+            id: "boomerang-idol-ozzy",
+            name: "Billie Eilish Boomerang Idol",
+            holder: "ozzy",
+            type: "idol",
+            icon: "\uD83D\uDEE1\uFE0F",
+            status: "active", // active, used, expired
+            foundEpisode: 1,
+            description: "A special immunity idol that can be played at Tribal Council to negate all votes cast against the holder. Unlike a standard idol, the Boomerang Idol returns into circulation after being played \u2014 it re-enters the game for another player to find, meaning it can impact multiple Tribal Councils across the season."
+        },
+        {
+            id: "boomerang-idol-genevieve",
+            name: "Billie Eilish Boomerang Idol",
+            holder: "genevieve",
+            type: "idol",
+            icon: "\uD83D\uDEE1\uFE0F",
+            status: "active",
+            foundEpisode: 1,
+            description: "A special immunity idol that can be played at Tribal Council to negate all votes cast against the holder. Unlike a standard idol, the Boomerang Idol returns into circulation after being played \u2014 it re-enters the game for another player to find, meaning it can impact multiple Tribal Councils across the season."
+        },
+        {
+            id: "lost-vote-colby",
+            name: "Lost Vote",
+            holder: "colby",
+            type: "disadvantage",
+            icon: "\u26A0\uFE0F",
+            status: "active",
+            foundEpisode: 1,
+            description: "Colby lost his vote at the next Tribal Council after losing a journey showdown. He cannot cast a vote at his tribe's next visit to Tribal Council."
+        }
+    ];
+
+    // ==================== SCHEDULE ====================
+    // Wednesdays at 8pm ET, Season premiered Feb 25, 2026
+    const EPISODE_DATES = [
+        "2026-02-25", "2026-03-04", "2026-03-11", "2026-03-18", "2026-03-25",
+        "2026-04-01", "2026-04-08", "2026-04-15", "2026-04-22", "2026-04-29",
+        "2026-05-06", "2026-05-13", "2026-05-20", "2026-05-27"
+    ];
+
+    // ==================== DERIVED STATE ====================
+    function getEliminatedMap() {
+        const map = {};
+        EPISODES.forEach(ep => {
+            ep.eliminations.forEach(elim => {
+                map[elim.id] = { episode: ep.number, method: elim.method, details: elim.details };
+            });
+        });
+        return map;
+    }
+
+    function getAdvantagesByHolder() {
+        const map = {};
+        ADVANTAGES.forEach(adv => {
+            if (!map[adv.holder]) map[adv.holder] = [];
+            map[adv.holder].push(adv);
+        });
+        return map;
+    }
+
+    function getCurrentEpisode() {
+        const now = new Date();
+        for (let i = EPISODE_DATES.length - 1; i >= 0; i--) {
+            const epDate = new Date(EPISODE_DATES[i] + "T20:00:00-05:00"); // 8pm ET
+            if (now >= epDate) return i + 1;
+        }
+        return 1;
+    }
+
+    function getNextEpisodeInfo() {
+        const now = new Date();
+        for (let i = 0; i < EPISODE_DATES.length; i++) {
+            const epDate = new Date(EPISODE_DATES[i] + "T20:00:00-05:00");
+            if (now < epDate) {
+                const diff = epDate - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                return { number: i + 1, date: EPISODE_DATES[i], days, hours };
+            }
+        }
+        return null;
+    }
+
+    // ==================== CALCULATIONS ====================
+    const eliminated = getEliminatedMap();
+    const advantagesByHolder = getAdvantagesByHolder();
+    const currentEpisode = getCurrentEpisode();
+
+    function isEliminated(id) { return !!eliminated[id]; }
+
+    function getTeamOdds(teamKey) {
+        const teamContestants = CONTESTANTS.filter(c => c.team === teamKey);
+        let total = 0;
+        teamContestants.forEach(c => { if (!isEliminated(c.id)) total += c.odds; });
+        const allAlive = CONTESTANTS.filter(c => !isEliminated(c.id));
+        const totalAliveOdds = allAlive.reduce((sum, c) => sum + c.odds, 0);
+        if (totalAliveOdds === 0) return 0;
+        return (total / totalAliveOdds) * 100;
+    }
+
+    function getContestantNormalizedOdds(c) {
+        if (isEliminated(c.id)) return 0;
+        const allAlive = CONTESTANTS.filter(x => !isEliminated(x.id));
+        const totalAliveOdds = allAlive.reduce((sum, x) => sum + x.odds, 0);
+        if (totalAliveOdds === 0) return 0;
+        return (c.odds / totalAliveOdds) * 100;
+    }
+
+    function getAliveCount(teamKey) {
+        return CONTESTANTS.filter(c => c.team === teamKey && !isEliminated(c.id)).length;
+    }
+
+    // ==================== RENDER ====================
+    function render() {
+        renderUpdateInfo();
+        renderStandings();
+        renderProbability();
+        renderTeams();
+        renderAdvantages();
+        renderEpisodes();
+    }
+
+    function renderUpdateInfo() {
+        const banner = document.getElementById('nextEpisodeBanner');
+        const info = document.getElementById('updateInfo');
+        const next = getNextEpisodeInfo();
+        const latestEp = EPISODES.length > 0 ? EPISODES[EPISODES.length - 1] : null;
+
+        if (next) {
+            banner.innerHTML = `&#128250; <strong>Next Episode:</strong> Episode ${next.number} &mdash; ${formatDate(next.date)} &mdash; ${next.days}d ${next.hours}h away`;
+        } else {
+            banner.innerHTML = `&#127942; Season Complete!`;
+        }
+
+        if (latestEp) {
+            const aliveCount = CONTESTANTS.filter(c => !isEliminated(c.id)).length;
+            info.textContent = `Last updated after Episode ${latestEp.number} (${formatDate(latestEp.airDate)}) \u2022 ${aliveCount} players remaining`;
+        }
+    }
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr + "T12:00:00");
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    function renderStandings() {
+        const bar = document.getElementById('standingsBar');
+        const ranked = Object.keys(TEAMS).map(key => ({
+            key, ...TEAMS[key], odds: getTeamOdds(key), alive: getAliveCount(key)
+        })).sort((a, b) => b.odds - a.odds);
+
+        bar.innerHTML = ranked.map((t, i) => `
+            <div class="standing-pill" style="border-color: ${t.color}30;">
+                <div class="dot" style="background: ${t.color};"></div>
+                <span>${t.name.replace('Team ', '')}</span>
+                <span class="pct" style="color: ${t.color};">${t.odds.toFixed(1)}%</span>
+                ${i === 0 ? '<span class="leader-crown">&#128081;</span>' : ''}
+            </div>
+        `).join('');
+    }
+
+    function renderProbability() {
+        const container = document.getElementById('probContainer');
+        const ranked = Object.keys(TEAMS).map(key => ({
+            key, ...TEAMS[key], odds: getTeamOdds(key)
+        })).sort((a, b) => b.odds - a.odds);
+
+        container.innerHTML = ranked.map((t, i) => `
+            <div class="prob-row">
+                <div class="rank-badge rank-${i + 1}">${i + 1}</div>
+                <div class="prob-name" style="color: ${t.color};">${t.name.replace('Team ', '')}</div>
+                <div class="prob-bar-track">
+                    <div class="prob-bar-fill" style="width: ${t.odds}%; background: linear-gradient(90deg, ${t.color}, ${t.color}aa);">
+                        ${t.odds > 15 ? t.odds.toFixed(1) + '%' : ''}
+                    </div>
+                </div>
+                <div class="prob-value" style="color: ${t.color};">${t.odds.toFixed(1)}%</div>
+            </div>
+        `).join('') + `<p class="odds-note">Win probability = sum of remaining contestants' odds, normalized. Updated after Ep ${EPISODES.length} based on DraftKings power rankings.</p>`;
+    }
+
+    function getPhotoUrl(c) {
+        return c.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=${TEAMS[c.team].color.slice(1)}&color=fff&size=200&bold=true&font-size=0.4`;
+    }
+
+    function getFallbackUrl(c) {
+        const colors = { lizzy: 'e040fb', tanner: '29b6f6', nick: '66bb6a', casey: 'ffa726' };
+        return `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=${colors[c.team]}&color=fff&size=200&bold=true&font-size=0.4`;
+    }
+
+    function renderAdvBadges(contestantId) {
+        const advs = advantagesByHolder[contestantId];
+        if (!advs || advs.length === 0) return '';
+        return '<span class="advantage-badges">' + advs.map(a => {
+            const cls = a.type === 'disadvantage' ? 'disadvantage' : 'idol';
+            return `<span class="adv-badge ${cls}" title="${a.name}">${a.icon}</span>`;
+        }).join('') + '</span>';
+    }
+
+    function renderTeams() {
+        const grid = document.getElementById('teamsGrid');
+        const teamOrder = ['lizzy', 'tanner', 'nick', 'casey'];
+        const leader = teamOrder.reduce((best, k) => getTeamOdds(k) > getTeamOdds(best) ? k : best, teamOrder[0]);
+
+        grid.innerHTML = teamOrder.map(teamKey => {
+            const team = TEAMS[teamKey];
+            const members = CONTESTANTS.filter(c => c.team === teamKey);
+            const odds = getTeamOdds(teamKey);
+            const alive = getAliveCount(teamKey);
+            const isLeader = teamKey === leader;
+
+            return `
+                <div class="team-card ${isLeader ? 'leader' : ''}" style="border-color: ${team.color}20;">
+                    <div class="team-header" style="background: ${team.colorLight};">
+                        <div class="team-name-group">
+                            <div class="team-color-bar" style="background: ${team.color};"></div>
+                            <div class="team-name" style="color: ${team.color};">
+                                ${team.name} ${isLeader ? '<span class="leader-crown">&#128081;</span>' : ''}
+                            </div>
+                        </div>
+                        <div class="team-stats">
+                            <div class="team-odds" style="color: ${team.color};">${odds.toFixed(1)}%</div>
+                            <div class="team-alive">${alive}/6 remaining</div>
+                        </div>
+                    </div>
+                    <div class="team-members">
+                        ${members.map(m => {
+                            const isElim = isEliminated(m.id);
+                            const elimData = eliminated[m.id];
+                            const normalizedOdds = getContestantNormalizedOdds(m);
+                            return `
+                                <div class="member-row ${isElim ? 'eliminated' : ''}">
+                                    <div class="photo-wrapper">
+                                        <img class="member-photo" src="${getPhotoUrl(m)}" alt="${m.name}" onerror="this.onerror=null; this.src=getFallbackUrl(CONTESTANTS.find(c=>c.id==='${m.id}'))">
+                                        <span class="elim-x">&#10006;</span>
+                                    </div>
+                                    <div class="member-info">
+                                        <div class="member-name">${m.name}${renderAdvBadges(m.id)}</div>
+                                        <div class="member-season">${m.season}</div>
+                                        ${isElim ? `<div class="elim-method">Ep ${elimData.episode}: ${elimData.method}</div>` : ''}
+                                    </div>
+                                    <div class="member-odds" style="color: ${isElim ? 'var(--text-muted)' : team.color};">
+                                        ${isElim ? 'OUT' : normalizedOdds.toFixed(1) + '%'}
+                                    </div>
+                                    <div class="member-status">
+                                        <span class="status-dot ${isElim ? 'eliminated-dot' : 'alive'}"></span>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderAdvantages() {
+        const grid = document.getElementById('advantagesGrid');
+
+        if (ADVANTAGES.length === 0) {
+            grid.innerHTML = '<p style="color: var(--text-muted); font-style: italic; text-align: center; padding: 2rem;">No advantages or idols have been found yet.</p>';
+            return;
+        }
+
+        grid.innerHTML = ADVANTAGES.map(adv => {
+            const holder = CONTESTANTS.find(c => c.id === adv.holder);
+            const holderTeam = holder ? TEAMS[holder.team] : null;
+            const holderElim = holder ? isEliminated(holder.id) : false;
+            const iconClass = adv.type === 'disadvantage' ? 'disadvantage-icon' : 'idol-icon';
+            const descClass = adv.type === 'disadvantage' ? 'negative' : '';
+
+            let statusClass = 'active';
+            let statusText = 'In Play';
+            if (adv.status === 'used') { statusClass = 'lost'; statusText = 'Used'; }
+            else if (adv.status === 'expired') { statusClass = 'lost'; statusText = 'Expired'; }
+            else if (holderElim) { statusClass = 'lost'; statusText = 'Holder Eliminated'; }
+
+            return `
+                <div class="advantage-card ${adv.status === 'used' ? 'used' : ''}">
+                    <div class="adv-card-header">
+                        <div class="adv-icon ${iconClass}">${adv.icon}</div>
+                        <div>
+                            <div class="adv-card-title">${adv.name}</div>
+                            <div class="adv-card-holder" style="color: ${holderTeam ? holderTeam.color : 'var(--text-secondary)'};">
+                                Held by: <strong>${holder ? holder.name : 'Unknown'}</strong>
+                                ${holderTeam ? `(${holderTeam.name})` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adv-card-desc ${descClass}">${adv.description}</div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+                        <span class="adv-status-tag ${statusClass}">${statusText}</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);">Found: Episode ${adv.foundEpisode}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderEpisodes() {
+        const grid = document.getElementById('episodeGrid');
+        const episodeMap = {};
+        EPISODES.forEach(ep => { episodeMap[ep.number] = ep; });
+
+        const slots = [];
+        for (let i = 1; i <= TOTAL_EPISODES; i++) {
+            const ep = episodeMap[i];
+            const isCurrent = i === currentEpisode && !ep;
+            const isAired = !!ep;
+            const dateStr = EPISODE_DATES[i - 1] ? formatDate(EPISODE_DATES[i - 1]) : '';
+
+            let content = '';
+            if (ep && ep.eliminations.length > 0) {
+                content = ep.eliminations.map(elim => {
+                    const c = CONTESTANTS.find(x => x.id === elim.id);
+                    return `
+                        <div class="episode-elim-entry">
+                            <div class="episode-eliminated">${c ? c.name : elim.id}</div>
+                            <div class="episode-method">${elim.method}</div>
+                            ${c ? `<div class="episode-team" style="color: ${TEAMS[c.team].color};">${TEAMS[c.team].name}</div>` : ''}
+                        </div>
+                    `;
+                }).join('');
+            } else if (isAired) {
+                content = '<div class="episode-eliminated none">No elimination</div>';
+            } else {
+                content = '<div class="episode-eliminated none">TBD</div>';
+            }
+
+            slots.push(`
+                <div class="episode-slot ${isCurrent ? 'current' : ''} ${isAired ? 'aired' : ''}">
+                    <div class="episode-number">Episode ${i} ${isCurrent ? '&#128293;' : ''}</div>
+                    <div class="episode-date">${dateStr}</div>
+                    ${content}
+                </div>
+            `);
+        }
+        grid.innerHTML = slots.join('');
+    }
+
+    // ==================== AUTO-REFRESH ====================
+    // Check every 30 minutes if it's Thursday (day after episode airs)
+    // and auto-reload the page to pick up data updates
+    function setupAutoRefresh() {
+        setInterval(() => {
+            const now = new Date();
+            const dayOfWeek = now.getDay(); // 0=Sun, 4=Thu
+            const hour = now.getHours();
+            // Refresh on Thursday between midnight and 6am (when data would be updated)
+            if (dayOfWeek === 4 && hour >= 0 && hour < 6) {
+                location.reload();
+            }
+        }, 30 * 60 * 1000); // Check every 30 min
+    }
+
+    // ==================== INIT ====================
+    render();
+    setupAutoRefresh();
+    </script>
+</body>
+</html>
