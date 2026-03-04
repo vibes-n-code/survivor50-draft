@@ -661,7 +661,7 @@
 
         grid.innerHTML = teamOrder.map(teamKey => {
             const team = TEAMS[teamKey];
-            const members = CONTESTANTS.filter(c => c.team === teamKey);
+            const members = CONTESTANTS.filter(c => c.team === teamKey).sort((a, b) => getContestantNormalizedOdds(b) - getContestantNormalizedOdds(a));
             const odds = getTeamOdds(teamKey);
             const alive = getAliveCount(teamKey);
             const isLeader = teamKey === leader;
