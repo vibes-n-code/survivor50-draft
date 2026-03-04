@@ -656,8 +656,8 @@
 
     function renderTeams() {
         const grid = document.getElementById('teamsGrid');
-        const teamOrder = ['lizzy', 'tanner', 'nick', 'casey'];
-        const leader = teamOrder.reduce((best, k) => getTeamOdds(k) > getTeamOdds(best) ? k : best, teamOrder[0]);
+        const teamOrder = Object.keys(TEAMS).sort((a, b) => getTeamOdds(b) - getTeamOdds(a));
+        const leader = teamOrder[0];
 
         grid.innerHTML = teamOrder.map(teamKey => {
             const team = TEAMS[teamKey];
