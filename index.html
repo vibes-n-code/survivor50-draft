@@ -200,6 +200,7 @@
             cursor: help; position: relative;
         }
         .adv-badge.idol { background: rgba(255, 215, 0, 0.2); border: 1px solid rgba(255, 215, 0, 0.5); }
+        .adv-badge.advantage { background: rgba(38, 198, 218, 0.2); border: 1px solid rgba(38, 198, 218, 0.5); }
         .adv-badge.disadvantage { background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); }
         .adv-badge.medevac { background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); }
 
@@ -240,6 +241,7 @@
             font-size: 1.1rem; flex-shrink: 0;
         }
         .adv-icon.idol-icon { background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); }
+        .adv-icon.advantage-icon { background: rgba(38, 198, 218, 0.15); border: 1px solid rgba(38, 198, 218, 0.4); }
         .adv-icon.disadvantage-icon { background: rgba(229, 57, 53, 0.15); border: 1px solid rgba(229, 57, 53, 0.4); }
         .adv-card-title { font-weight: 700; font-size: 0.95rem; }
         .adv-card-holder {
@@ -400,10 +402,10 @@
     const PHOTO_BASE = "https://entertainmentnow.com/wp-content/uploads/2026/01/survivor-season-50-cast-spoilers-first-photos-";
 
     // ==================== CONTESTANT DATA ====================
-    // Odds updated after Episode 1 based on DraftKings power rankings
+    // Odds updated after Episode 2 based on DraftKings power rankings
     const CONTESTANTS = [
         // Team Lizzy
-        { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 2.5, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
+        { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 4.5, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
         { id: "ozzy", name: "Ozzy Lusth", team: "lizzy", season: "Cook Islands, Micro, SP, GC", odds: 4.0, photo: PHOTO_BASE + "ozzy-lutsh.jpg", initials: "OL" },
         { id: "chrissy", name: "Chrissy Hofbeck", team: "lizzy", season: "Heroes vs. Healers vs. Hustlers", odds: 4.5, photo: PHOTO_BASE + "chrissy-hofbeck.jpg", initials: "CH" },
         { id: "angelina", name: "Angelina Keeley", team: "lizzy", season: "David vs. Goliath", odds: 4.0, photo: PHOTO_BASE + "angelina-keeley.jpg", initials: "AK" },
@@ -411,12 +413,12 @@
         { id: "jenna", name: "Jenna Lewis", team: "lizzy", season: "Borneo, All-Stars", odds: 0, photo: PHOTO_BASE + "jenna-lewis-dougherty.jpg", initials: "JL" },
 
         // Team Tanner
-        { id: "aubry", name: "Aubry Bracco", team: "tanner", season: "Kaoh Rong, GC, Edge of Extinction", odds: 3.0, photo: PHOTO_BASE + "aubry-bracco.jpg", initials: "AB" },
+        { id: "aubry", name: "Aubry Bracco", team: "tanner", season: "Kaoh Rong, GC, Edge of Extinction", odds: 4.5, photo: PHOTO_BASE + "aubry-bracco.jpg", initials: "AB" },
         { id: "joe", name: "Joe Hunter", team: "tanner", season: "Season 48", odds: 3.5, photo: PHOTO_BASE + "joe-hunter.jpg", initials: "JH" },
-        { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 3.5, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
+        { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 4.0, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
         { id: "coach", name: "Coach Wade", team: "tanner", season: "Tocantins, HvV, South Pacific", odds: 3.0, photo: PHOTO_BASE + "benjamin-coach-wade.jpg", initials: "CW" },
         { id: "stephanie", name: "Stephenie LaGrossa", team: "tanner", season: "Palau, Guatemala, HvV", odds: 3.0, photo: PHOTO_BASE + "stephanie-lagrossa-kendrick.jpg", initials: "SL" },
-        { id: "savannah", name: "Savannah Louie", team: "tanner", season: "Season 49 (Winner)", odds: 5.0, photo: PHOTO_BASE + "savannah-louie.jpg", initials: "SV" },
+        { id: "savannah", name: "Savannah Louie", team: "tanner", season: "Season 49 (Winner)", odds: 0, photo: PHOTO_BASE + "savannah-louie.jpg", initials: "SV" },
 
         // Team Nick
         { id: "dee", name: "Dee Valladares", team: "nick", season: "Season 45 (Winner)", odds: 7.0, photo: PHOTO_BASE + "dee-valladares.jpg", initials: "DV" },
@@ -427,7 +429,7 @@
         { id: "genevieve", name: "Genevieve Mushaluk", team: "nick", season: "Season 47", odds: 6.0, photo: PHOTO_BASE + "genevieve-mushaluk.jpg", initials: "GM" },
 
         // Team Casey
-        { id: "christian", name: "Christian Hubicki", team: "casey", season: "David vs. Goliath", odds: 6.5, photo: PHOTO_BASE + "christian-hubicki.jpg", initials: "CH" },
+        { id: "christian", name: "Christian Hubicki", team: "casey", season: "David vs. Goliath", odds: 7.0, photo: PHOTO_BASE + "christian-hubicki.jpg", initials: "CH" },
         { id: "charlie", name: "Charlie Davis", team: "casey", season: "Season 46", odds: 6.0, photo: PHOTO_BASE + "charlie-davis.jpg", initials: "CD" },
         { id: "mike", name: "Mike White", team: "casey", season: "David vs. Goliath", odds: 4.0, photo: PHOTO_BASE + "mike-white.jpg", initials: "MW" },
         { id: "emily", name: "Emily Flippen", team: "casey", season: "Season 45", odds: 5.0, photo: PHOTO_BASE + "emily-flippen.jpg", initials: "EF" },
@@ -446,9 +448,16 @@
                 { id: "jenna", method: "Voted Out", details: "Unanimously voted out by Cila tribe. Voted for Cirie but was blindsided." },
                 { id: "kyle", method: "Medical Evacuation", details: "Medically evacuated from the game due to injury." }
             ]
+        },
+        {
+            number: 2,
+            airDate: "2026-03-04",
+            title: "Episode 2",
+            eliminations: [
+                { id: "savannah", method: "Voted Out", details: "Cirie orchestrated the vote to flush Savannah's hidden Block a Vote advantage. Savannah was blindsided." }
+            ]
         }
-        // Future episodes will be added here as they air:
-        // { number: 2, airDate: "2026-03-04", title: "Episode 2", eliminations: [{ id: "...", method: "Voted Out", details: "..." }] },
+        // Future episodes will be added here as they air
     ];
 
     const TOTAL_EPISODES = 14;
@@ -461,7 +470,7 @@
             holder: "ozzy",
             type: "idol",
             icon: "\uD83D\uDEE1\uFE0F",
-            status: "active", // active, used, expired
+            status: "active",
             foundEpisode: 1,
             description: "A special immunity idol that can be played at Tribal Council to negate all votes cast against the holder. Unlike a standard idol, the Boomerang Idol returns into circulation after being played \u2014 it re-enters the game for another player to find, meaning it can impact multiple Tribal Councils across the season."
         },
@@ -476,14 +485,54 @@
             description: "A special immunity idol that can be played at Tribal Council to negate all votes cast against the holder. Unlike a standard idol, the Boomerang Idol returns into circulation after being played \u2014 it re-enters the game for another player to find, meaning it can impact multiple Tribal Councils across the season."
         },
         {
+            id: "boomerang-idol-aubry",
+            name: "Billie Eilish Boomerang Idol",
+            holder: "aubry",
+            type: "idol",
+            icon: "\uD83D\uDEE1\uFE0F",
+            status: "active",
+            foundEpisode: 2,
+            description: "Found by Christian Hubicki in Episode 2 and gifted to Aubry Bracco. A special immunity idol that returns into circulation after being played."
+        },
+        {
+            id: "extra-vote-cirie",
+            name: "Extra Vote",
+            holder: "cirie",
+            type: "advantage",
+            icon: "\uD83C\uDFAF",
+            status: "active",
+            foundEpisode: 1,
+            description: "Q Burdette received this on Exile Island in Episode 1 and gave it to Ozzy Lusth. Ozzy then re-gifted it to Cirie Fields in Episode 2. Allows the holder to cast an additional vote at Tribal Council."
+        },
+        {
+            id: "block-a-vote-savannah",
+            name: "Block a Vote",
+            holder: "savannah",
+            type: "advantage",
+            icon: "\uD83D\uDEAB",
+            status: "eliminated",
+            foundEpisode: 1,
+            description: "Savannah found this advantage in Episode 1 and concealed it from her tribe. It would have allowed her to block another player's vote at Tribal Council. Flushed when Savannah was voted out in Episode 2."
+        },
+        {
             id: "lost-vote-colby",
             name: "Lost Vote",
             holder: "colby",
             type: "disadvantage",
             icon: "\u26A0\uFE0F",
-            status: "active",
+            status: "expired",
             foundEpisode: 1,
-            description: "Colby lost his vote at the next Tribal Council after losing a journey showdown. He cannot cast a vote at his tribe's next visit to Tribal Council."
+            description: "Colby lost his vote at the next Tribal Council after losing a journey showdown against Savannah. Expired after being applied."
+        },
+        {
+            id: "lost-vote-q",
+            name: "Lost Vote",
+            holder: "q",
+            type: "disadvantage",
+            icon: "\u26A0\uFE0F",
+            status: "expired",
+            foundEpisode: 1,
+            description: "Q lost his vote on Exile Island in exchange for camp supplies (pot and machete) for his tribe. He also gave Ozzy an Extra Vote as part of the Exile exchange. Expired after being applied."
         }
     ];
 
@@ -648,8 +697,10 @@
     function renderAdvBadges(contestantId) {
         const advs = advantagesByHolder[contestantId];
         if (!advs || advs.length === 0) return '';
-        return '<span class="advantage-badges">' + advs.map(a => {
-            const cls = a.type === 'disadvantage' ? 'disadvantage' : 'idol';
+        const active = advs.filter(a => a.status === 'active');
+        if (active.length === 0) return '';
+        return '<span class="advantage-badges">' + active.map(a => {
+            const cls = a.type === 'disadvantage' ? 'disadvantage' : a.type === 'advantage' ? 'advantage' : 'idol';
             return `<span class="adv-badge ${cls}" title="${a.name}">${a.icon}</span>`;
         }).join('') + '</span>';
     }
@@ -723,17 +774,19 @@
             const holder = CONTESTANTS.find(c => c.id === adv.holder);
             const holderTeam = holder ? TEAMS[holder.team] : null;
             const holderElim = holder ? isEliminated(holder.id) : false;
-            const iconClass = adv.type === 'disadvantage' ? 'disadvantage-icon' : 'idol-icon';
+            const iconClass = adv.type === 'disadvantage' ? 'disadvantage-icon' : adv.type === 'advantage' ? 'advantage-icon' : 'idol-icon';
             const descClass = adv.type === 'disadvantage' ? 'negative' : '';
+            const isInactive = ['used', 'expired', 'eliminated'].includes(adv.status);
 
             let statusClass = 'active';
             let statusText = 'In Play';
             if (adv.status === 'used') { statusClass = 'lost'; statusText = 'Used'; }
             else if (adv.status === 'expired') { statusClass = 'lost'; statusText = 'Expired'; }
+            else if (adv.status === 'eliminated') { statusClass = 'lost'; statusText = 'Flushed (Holder Voted Out)'; }
             else if (holderElim) { statusClass = 'lost'; statusText = 'Holder Eliminated'; }
 
             return `
-                <div class="advantage-card ${adv.status === 'used' ? 'used' : ''}">
+                <div class="advantage-card ${isInactive ? 'used' : ''}">
                     <div class="adv-card-header">
                         <div class="adv-icon ${iconClass}">${adv.icon}</div>
                         <div>
