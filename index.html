@@ -472,17 +472,7 @@
             icon: "\uD83D\uDEE1\uFE0F",
             status: "active",
             foundEpisode: 1,
-            description: "A special immunity idol that can be played at Tribal Council to negate all votes cast against the holder. Unlike a standard idol, the Boomerang Idol returns into circulation after being played \u2014 it re-enters the game for another player to find, meaning it can impact multiple Tribal Councils across the season."
-        },
-        {
-            id: "boomerang-idol-genevieve",
-            name: "Billie Eilish Boomerang Idol",
-            holder: "genevieve",
-            type: "idol",
-            icon: "\uD83D\uDEE1\uFE0F",
-            status: "active",
-            foundEpisode: 1,
-            description: "A special immunity idol that can be played at Tribal Council to negate all votes cast against the holder. Unlike a standard idol, the Boomerang Idol returns into circulation after being played \u2014 it re-enters the game for another player to find, meaning it can impact multiple Tribal Councils across the season."
+            description: "Genevieve found the Boomerang Idol clue in Episode 1 but the rules forced her to send the idol to someone on another tribe. She chose Ozzy, and it was secretly placed in his bag. Ozzy can only use it for himself and cannot give it away. If Ozzy is voted out without playing it, the idol boomerangs back to Genevieve."
         },
         {
             id: "boomerang-idol-aubry",
@@ -770,7 +760,13 @@
             return;
         }
 
-        grid.innerHTML = ADVANTAGES.map(adv => {
+        const sorted = [...ADVANTAGES].sort((a, b) => {
+            const aInactive = ['used', 'expired', 'eliminated'].includes(a.status) ? 1 : 0;
+            const bInactive = ['used', 'expired', 'eliminated'].includes(b.status) ? 1 : 0;
+            return aInactive - bInactive;
+        });
+
+        grid.innerHTML = sorted.map(adv => {
             const holder = CONTESTANTS.find(c => c.id === adv.holder);
             const holderTeam = holder ? TEAMS[holder.team] : null;
             const holderElim = holder ? isEliminated(holder.id) : false;
