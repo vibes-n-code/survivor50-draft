@@ -456,6 +456,22 @@
             eliminations: [
                 { id: "savannah", method: "Voted Out", details: "Cirie orchestrated the vote to flush Savannah's hidden Block a Vote advantage. Savannah was blindsided." }
             ]
+        },
+        {
+            number: 3,
+            airDate: "2026-03-11",
+            title: "Fan Vote Tribe Swap",
+            eliminations: [
+                { id: "q", method: "Voted Out", details: "Fans voted for a tribe swap; Jeff announced the new tribes via rap. New tribes: Cila (Charlie, Dee, Rizo, Kamilla, Jonathan, Cirie, Rick), Kalo (Aubry, Joe, Genevieve, Coach, Chrissy, Colby, Tiff), Vatu (Christian, Mike, Emily, Ozzy, Stephenie, Q, Angelina). Q could not vote due to his Lost Vote disadvantage. Emily and Ozzy flipped on Stephenie to join the David vs. Goliath trio; Angelina also flipped. Q voted out 4-0." }
+            ]
+        },
+        {
+            number: 4,
+            airDate: "2026-03-18",
+            title: "Knife to the Heart",
+            eliminations: [
+                { id: "mike", method: "Voted Out", details: "Kalo won immunity and a Zac Brown Band reward. Vatu lost again. Ozzy pushed to vote out Angelina, but Mike lobbied to target Emily instead. Christian clocked Mike's manipulation and declared him the most dangerous player in the game, flipping the vote. Mike blindsided 3-2-1: Christian, Stephenie, and Emily voted Mike; Mike and Angelina voted Emily; Ozzy voted Angelina. Mike's exit quote: 'You skunks! Amazing. Good job, you guys.'" }
+            ]
         }
         // Future episodes will be added here as they air
     ];
@@ -520,9 +536,19 @@
             holder: "q",
             type: "disadvantage",
             icon: "\u26A0\uFE0F",
-            status: "active",
+            status: "eliminated",
             foundEpisode: 1,
-            description: "Q lost his vote on Exile Island in exchange for camp supplies (pot and machete) for his tribe. He also gave Ozzy an Extra Vote as part of the Exile exchange. He cannot cast a vote at his tribe's next visit to Tribal Council."
+            description: "Q lost his vote on Exile Island in exchange for camp supplies (pot and machete) for his tribe. He also gave Ozzy an Extra Vote as part of the Exile exchange. Q was voted out in Episode 3 without ever being able to cast a vote — he could not vote at the TC where he was eliminated."
+        },
+        {
+            id: "boomerang-idol-genevieve",
+            name: "Billie Eilish Boomerang Idol",
+            holder: "rizo",
+            type: "idol",
+            icon: "\uD83D\uDEE1\uFE0F",
+            status: "active",
+            foundEpisode: 4,
+            description: "Found by Genevieve Mushaluk in Episode 4 during a search on Kalo beach. Genevieve gifted the idol to Rizo Velovic. A special immunity idol that returns into circulation after being played."
         }
     ];
 
