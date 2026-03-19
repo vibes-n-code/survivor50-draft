@@ -430,7 +430,7 @@
 
     <footer>
         <p>Survivor 50 Snake Draft Tracker &middot; Stakes: New Uchi Dinner</p>
-        <p style="margin-top: 0.5rem;">Odds based on DraftKings power rankings &amp; betting projections. Updated after each episode.</p>
+        <p style="margin-top: 0.5rem;">Win probability weights derived from DK Network power rankings and episode narrative analysis. Updated weekly after each episode airs.</p>
         <p style="margin-top: 0.25rem;">Page auto-refreshes Thursdays at 12:00 AM ET after new episodes air.</p>
     </footer>
 
@@ -446,7 +446,7 @@
     const PHOTO_BASE = "https://entertainmentnow.com/wp-content/uploads/2026/01/survivor-season-50-cast-spoilers-first-photos-";
 
     // ==================== CONTESTANT DATA ====================
-    // Odds updated after Episode 2 based on DraftKings power rankings
+    // Odds weights updated after Episode 4 — derived from EP3 DK Network power rankings + EP4 narrative analysis
     const CONTESTANTS = [
         // Team Lizzy
         { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 6.5, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
@@ -775,7 +775,7 @@
                 </div>
                 <div class="prob-value" style="color: ${t.color};">${t.odds.toFixed(1)}%</div>
             </div>
-        `).join('') + `<p class="odds-note">Win probability = sum of remaining contestants' odds, normalized. Updated after Ep ${EPISODES.length} based on DraftKings power rankings.</p>`;
+        `).join('') + `<p class="odds-note">Win probability = each player's odds weight divided by the sum of all remaining players' weights. Weights derived from DK Network power rankings and episode narrative analysis. Updated after Ep ${EPISODES.length}.</p>`;
     }
 
     function getPhotoUrl(c) {
