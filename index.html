@@ -446,13 +446,13 @@
     const PHOTO_BASE = "https://entertainmentnow.com/wp-content/uploads/2026/01/survivor-season-50-cast-spoilers-first-photos-";
 
     // ==================== CONTESTANT DATA ====================
-    // Odds weights updated after Episode 4 — derived from EP3 DK Network power rankings + EP4 narrative analysis
+    // Odds weights updated after Episode 5 — derived from EP3 DK Network power rankings + EP4/EP5 narrative analysis
     const CONTESTANTS = [
         // Team Lizzy
         { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 6.5, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
-        { id: "ozzy", name: "Ozzy Lusth", team: "lizzy", season: "Cook Islands, Micro, SP, GC", odds: 4.5, photo: PHOTO_BASE + "ozzy-lutsh.jpg", initials: "OL" },
+        { id: "ozzy", name: "Ozzy Lusth", team: "lizzy", season: "Cook Islands, Micro, SP, GC", odds: 4.0, photo: PHOTO_BASE + "ozzy-lutsh.jpg", initials: "OL" },
         { id: "chrissy", name: "Chrissy Hofbeck", team: "lizzy", season: "Heroes vs. Healers vs. Hustlers", odds: 4.5, photo: PHOTO_BASE + "chrissy-hofbeck.jpg", initials: "CH" },
-        { id: "angelina", name: "Angelina Keeley", team: "lizzy", season: "David vs. Goliath", odds: 2.0, photo: PHOTO_BASE + "angelina-keeley.jpg", initials: "AK" },
+        { id: "angelina", name: "Angelina Keeley", team: "lizzy", season: "David vs. Goliath", odds: 0, photo: PHOTO_BASE + "angelina-keeley.jpg", initials: "AK" },
         { id: "colby", name: "Colby Donaldson", team: "lizzy", season: "Outback, All-Stars, HvV", odds: 5.5, photo: PHOTO_BASE + "colby-donaldson.jpg", initials: "CD" },
         { id: "jenna", name: "Jenna Lewis", team: "lizzy", season: "Borneo, All-Stars", odds: 0, photo: PHOTO_BASE + "jenna-lewis-dougherty.jpg", initials: "JL" },
 
@@ -465,19 +465,19 @@
         { id: "savannah", name: "Savannah Louie", team: "tanner", season: "Season 49 (Winner)", odds: 0, photo: PHOTO_BASE + "savannah-louie.jpg", initials: "SV" },
 
         // Team Nick
-        { id: "dee", name: "Dee Valladares", team: "nick", season: "Season 45 (Winner)", odds: 5.0, photo: PHOTO_BASE + "dee-valladares.jpg", initials: "DV" },
-        { id: "jonathan", name: "Jonathan Young", team: "nick", season: "Season 42", odds: 6.0, photo: PHOTO_BASE + "jonathan-young.jpg", initials: "JY" },
-        { id: "rizo", name: "Rizo Velovic", team: "nick", season: "Season 49", odds: 3.5, photo: PHOTO_BASE + "rizo-velovic.jpg", initials: "RV" },
+        { id: "dee", name: "Dee Valladares", team: "nick", season: "Season 45 (Winner)", odds: 5.5, photo: PHOTO_BASE + "dee-valladares.jpg", initials: "DV" },
+        { id: "jonathan", name: "Jonathan Young", team: "nick", season: "Season 42", odds: 4.5, photo: PHOTO_BASE + "jonathan-young.jpg", initials: "JY" },
+        { id: "rizo", name: "Rizo Velovic", team: "nick", season: "Season 49", odds: 6.0, photo: PHOTO_BASE + "rizo-velovic.jpg", initials: "RV" },
         { id: "q", name: "Q Burdette", team: "nick", season: "Season 46", odds: 0, photo: PHOTO_BASE + "quintavius-q-burdette.jpg", initials: "QB" },
         { id: "kyle", name: "Kyle Fraser", team: "nick", season: "Season 48 (Winner)", odds: 0, photo: PHOTO_BASE + "kyle-fraser.jpg", initials: "KF" },
         { id: "genevieve", name: "Genevieve Mushaluk", team: "nick", season: "Season 47", odds: 6.0, photo: PHOTO_BASE + "genevieve-mushaluk.jpg", initials: "GM" },
 
         // Team Casey
         { id: "christian", name: "Christian Hubicki", team: "casey", season: "David vs. Goliath", odds: 9.0, photo: PHOTO_BASE + "christian-hubicki.jpg", initials: "CH" },
-        { id: "charlie", name: "Charlie Davis", team: "casey", season: "Season 46", odds: 2.5, photo: PHOTO_BASE + "charlie-davis.jpg", initials: "CD" },
+        { id: "charlie", name: "Charlie Davis", team: "casey", season: "Season 46", odds: 0, photo: PHOTO_BASE + "charlie-davis.jpg", initials: "CD" },
         { id: "mike", name: "Mike White", team: "casey", season: "David vs. Goliath", odds: 0, photo: PHOTO_BASE + "mike-white.jpg", initials: "MW" },
         { id: "emily", name: "Emily Flippen", team: "casey", season: "Season 45", odds: 4.5, photo: PHOTO_BASE + "emily-flippen.jpg", initials: "EF" },
-        { id: "kamilla", name: "Kamila Karthigesu", team: "casey", season: "Season 48", odds: 3.0, photo: PHOTO_BASE + "kamilla-karthigesu.jpg", initials: "KK" },
+        { id: "kamilla", name: "Kamila Karthigesu", team: "casey", season: "Season 48", odds: 4.0, photo: PHOTO_BASE + "kamilla-karthigesu.jpg", initials: "KK" },
         { id: "tiff", name: "Tiffany Ervin", team: "casey", season: "Season 46", odds: 4.0, photo: PHOTO_BASE + "tiffany-ervin.jpg", initials: "TE" }
     ];
 
@@ -515,6 +515,15 @@
             title: "Knife to the Heart",
             eliminations: [
                 { id: "mike", method: "Voted Out", details: "Kalo won immunity and a Zac Brown Band reward. Vatu lost again. Ozzy pushed to vote out Angelina, but Mike lobbied to target Emily instead. Christian clocked Mike's manipulation and declared him the most dangerous player in the game, flipping the vote. Mike blindsided 3-2-1: Christian, Stephenie, and Emily voted Mike; Mike and Angelina voted Emily; Ozzy voted Angelina. Mike's exit quote: 'You skunks! Amazing. Good job, you guys.'" }
+            ]
+        },
+        {
+            number: 5,
+            airDate: "2026-03-25",
+            title: "Double Elimination",
+            eliminations: [
+                { id: "angelina", method: "Voted Out", details: "Vatu lost immunity. Ozzy, still bitter over the Mike blindside, asked Christian to hand over his Shot in the Dark as a loyalty gesture — Christian surprisingly complied. Ozzy also tried to flip Emily and Stephenie to blindside Christian, but Emily immediately told Christian everything. With no real alternative target, Angelina was voted out unanimously 4-0. She gave her jacket to the tribe on the way out." },
+                { id: "charlie", method: "Voted Out", details: "Cila's Charlie was obsessed with voting out Rizo over the Maria betrayal from Season 46. Rizo had a massive episode: he revealed his Boomerang Idol to Dee to lock in her trust, told Cirie about the idol (who revealed to Rizo she holds the Extra Vote), and fabricated a fake Kyle dying-wish story to try to pull in Kamilla. Dee declared 'I actually thought Charlie was the most dangerous player here, but I actually think he's the dumbest player here.' Kamilla was the swing vote and flipped to Rizo's side. Charlie voted out ~4-2 with Jonathan in the minority. Rizo delivered a Taylor Swift-themed voting confessional. Charlie cried during his final words." }
             ]
         }
         // Future episodes will be added here as they air
