@@ -805,7 +805,7 @@
                 <div class="prob-name" style="color: ${t.color};">${t.name.replace('Team ', '')}</div>
                 <div class="prob-bar-track">
                     <div class="prob-bar-fill" style="width: ${t.odds}%; background: linear-gradient(90deg, ${t.color}, ${t.color}aa);">
-                        ${t.odds > 15 ? t.odds.toFixed(1) + '%' : ''}
+                        ${t.odds > 10 ? t.odds.toFixed(1) + '%' : ''}
                     </div>
                 </div>
                 <div class="prob-value" style="color: ${t.color};">${t.odds.toFixed(1)}%</div>
