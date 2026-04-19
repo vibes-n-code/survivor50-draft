@@ -446,39 +446,39 @@
     const PHOTO_BASE = "https://entertainmentnow.com/wp-content/uploads/2026/01/survivor-season-50-cast-spoilers-first-photos-";
 
     // ==================== CONTESTANT DATA ====================
-    // Odds weights updated after Episode 7 — derived from EP6 Medium power rankings + EP7 narrative analysis
+    // Odds weights updated after Episode 8 — derived from EP8 DK Network power rankings
     const CONTESTANTS = [
         // Team Lizzy
-        { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 7.0, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
+        { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 8.0, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
         { id: "ozzy", name: "Ozzy Lusth", team: "lizzy", season: "Cook Islands, Micro, SP, GC", odds: 5.5, photo: PHOTO_BASE + "ozzy-lutsh.jpg", initials: "OL" },
-        { id: "chrissy", name: "Chrissy Hofbeck", team: "lizzy", season: "Heroes vs. Healers vs. Hustlers", odds: 4.0, photo: PHOTO_BASE + "chrissy-hofbeck.jpg", initials: "CH" },
+        { id: "chrissy", name: "Chrissy Hofbeck", team: "lizzy", season: "Heroes vs. Healers vs. Hustlers", odds: 0, photo: PHOTO_BASE + "chrissy-hofbeck.jpg", initials: "CH" },
         { id: "angelina", name: "Angelina Keeley", team: "lizzy", season: "David vs. Goliath", odds: 0, photo: PHOTO_BASE + "angelina-keeley.jpg", initials: "AK" },
         { id: "colby", name: "Colby Donaldson", team: "lizzy", season: "Outback, All-Stars, HvV", odds: 0, photo: PHOTO_BASE + "colby-donaldson.jpg", initials: "CD" },
         { id: "jenna", name: "Jenna Lewis", team: "lizzy", season: "Borneo, All-Stars", odds: 0, photo: PHOTO_BASE + "jenna-lewis-dougherty.jpg", initials: "JL" },
 
         // Team Tanner
-        { id: "aubry", name: "Aubry Bracco", team: "tanner", season: "Kaoh Rong, GC, Edge of Extinction", odds: 4.5, photo: PHOTO_BASE + "aubry-bracco.jpg", initials: "AB" },
+        { id: "aubry", name: "Aubry Bracco", team: "tanner", season: "Kaoh Rong, GC, Edge of Extinction", odds: 6.0, photo: PHOTO_BASE + "aubry-bracco.jpg", initials: "AB" },
         { id: "joe", name: "Joe Hunter", team: "tanner", season: "Season 48", odds: 3.5, photo: PHOTO_BASE + "joe-hunter.jpg", initials: "JH" },
-        { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 8.5, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
-        { id: "coach", name: "Coach Wade", team: "tanner", season: "Tocantins, HvV, South Pacific", odds: 4.5, photo: PHOTO_BASE + "benjamin-coach-wade.jpg", initials: "CW" },
-        { id: "stephanie", name: "Stephenie LaGrossa", team: "tanner", season: "Palau, Guatemala, HvV", odds: 6.0, photo: PHOTO_BASE + "stephanie-lagrossa-kendrick.jpg", initials: "SL" },
+        { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 7.5, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
+        { id: "coach", name: "Coach Wade", team: "tanner", season: "Tocantins, HvV, South Pacific", odds: 0, photo: PHOTO_BASE + "benjamin-coach-wade.jpg", initials: "CW" },
+        { id: "stephanie", name: "Stephenie LaGrossa", team: "tanner", season: "Palau, Guatemala, HvV", odds: 4.0, photo: PHOTO_BASE + "stephanie-lagrossa-kendrick.jpg", initials: "SL" },
         { id: "savannah", name: "Savannah Louie", team: "tanner", season: "Season 49 (Winner)", odds: 0, photo: PHOTO_BASE + "savannah-louie.jpg", initials: "SV" },
 
         // Team Nick
         { id: "dee", name: "Dee Valladares", team: "nick", season: "Season 45 (Winner)", odds: 0, photo: PHOTO_BASE + "dee-valladares.jpg", initials: "DV" },
-        { id: "jonathan", name: "Jonathan Young", team: "nick", season: "Season 42", odds: 3.0, photo: PHOTO_BASE + "jonathan-young.jpg", initials: "JY" },
+        { id: "jonathan", name: "Jonathan Young", team: "nick", season: "Season 42", odds: 5.0, photo: PHOTO_BASE + "jonathan-young.jpg", initials: "JY" },
         { id: "rizo", name: "Rizo Velovic", team: "nick", season: "Season 49", odds: 6.5, photo: PHOTO_BASE + "rizo-velovic.jpg", initials: "RV" },
         { id: "q", name: "Q Burdette", team: "nick", season: "Season 46", odds: 0, photo: PHOTO_BASE + "quintavius-q-burdette.jpg", initials: "QB" },
         { id: "kyle", name: "Kyle Fraser", team: "nick", season: "Season 48 (Winner)", odds: 0, photo: PHOTO_BASE + "kyle-fraser.jpg", initials: "KF" },
         { id: "genevieve", name: "Genevieve Mushaluk", team: "nick", season: "Season 47", odds: 0, photo: PHOTO_BASE + "genevieve-mushaluk.jpg", initials: "GM" },
 
         // Team Casey
-        { id: "christian", name: "Christian Hubicki", team: "casey", season: "David vs. Goliath", odds: 7.5, photo: PHOTO_BASE + "christian-hubicki.jpg", initials: "CH" },
+        { id: "christian", name: "Christian Hubicki", team: "casey", season: "David vs. Goliath", odds: 9.0, photo: PHOTO_BASE + "christian-hubicki.jpg", initials: "CH" },
         { id: "charlie", name: "Charlie Davis", team: "casey", season: "Season 46", odds: 0, photo: PHOTO_BASE + "charlie-davis.jpg", initials: "CD" },
         { id: "mike", name: "Mike White", team: "casey", season: "David vs. Goliath", odds: 0, photo: PHOTO_BASE + "mike-white.jpg", initials: "MW" },
-        { id: "emily", name: "Emily Flippen", team: "casey", season: "Season 45", odds: 5.0, photo: PHOTO_BASE + "emily-flippen.jpg", initials: "EF" },
+        { id: "emily", name: "Emily Flippen", team: "casey", season: "Season 45", odds: 4.5, photo: PHOTO_BASE + "emily-flippen.jpg", initials: "EF" },
         { id: "kamilla", name: "Kamila Karthigesu", team: "casey", season: "Season 48", odds: 0, photo: PHOTO_BASE + "kamilla-karthigesu.jpg", initials: "KK" },
-        { id: "tiff", name: "Tiffany Ervin", team: "casey", season: "Season 46", odds: 4.0, photo: PHOTO_BASE + "tiffany-ervin.jpg", initials: "TE" }
+        { id: "tiff", name: "Tiffany Ervin", team: "casey", season: "Season 46", odds: 4.5, photo: PHOTO_BASE + "tiffany-ervin.jpg", initials: "TE" }
     ];
 
     // ==================== EPISODE DATA ====================
@@ -542,6 +542,15 @@
             title: "That's Not How I Play Survivor",
             eliminations: [
                 { id: "dee", method: "Voted Out", details: "First post-merge tribal council with all 14 remaining players. Stephenie won a Steal-a-Vote advantage on a journey. The tribe split into two groups for a combined reward/immunity challenge — Ozzy won individual immunity. Coach formed the 'Four Horsemen' alliance (Coach, Jonathan, Joe, Rizo) and targeted Dee, but his split-vote plan leaked. At tribal, Aubry played her Boomerang Idol for herself (negated 0 votes) and Dee played her Shot in the Dark (not safe). Dee voted out 8-4-1 (8 votes Dee, 4 votes Tiffany, 1 vote Coach). Dee became the first member of the jury." }
+            ]
+        },
+        {
+            number: 8,
+            airDate: "2026-04-15",
+            title: "Double the Fun, Double the Demise",
+            eliminations: [
+                { id: "coach", method: "Voted Out", details: "Double Duo twist: 13 players divided into pairs; Cirie sat out on Exile Island. Cirie won an Exile advantage by finding a marked coconut among 2,000, earning a vote at tribal council. Joe and Tiffany won immunity together. Rick and Christian planted a fake idol and Rick retrieved it at tribal to trigger a live discussion. Cirie pushed to dismantle the Four Horsemen — Coach and Chrissy were targeted together. Coach played a Shot in the Dark (not safe). Voted out 11-1-1. Jury member #2." },
+                { id: "chrissy", method: "Voted Out", details: "Eliminated alongside Coach in the Double Duo twist. Jonathan lost both of his closest allies in one vote. Voted out 11-1-1. Jury member #3." }
             ]
         }
         // Future episodes will be added here as they air
@@ -634,32 +643,32 @@
     ];
 
     // ==================== POWER RANKINGS ====================
-    // Last updated: after Episode 7 (Apr 8, 2026)
-    // Based on: EP6 Medium power rankings (jfish) + EP7 narrative analysis
-    // EP6 Rankings: https://fzafisher.medium.com/survivor-50-episode-6-power-rankings-c45eb1aca89c
+    // Last updated: after Episode 8 (Apr 15, 2026)
+    // Based on: EP8 DK Network power rankings
+    // EP8 Rankings: https://dknetwork.draftkings.com/2026/04/16/survivor-50-power-rankings-fallout-after-episode-8/
     const POWER_RANKINGS = {
-        updatedAfterEpisode: 7,
-        updatedDate: "2026-04-08",
-        sourceLabel: "EP6 Medium Power Rankings + EP7 narrative",
-        sourceUrl: "https://fzafisher.medium.com/survivor-50-episode-6-power-rankings-c45eb1aca89c",
+        updatedAfterEpisode: 8,
+        updatedDate: "2026-04-15",
+        sourceLabel: "EP8 DK Network Power Rankings",
+        sourceUrl: "https://dknetwork.draftkings.com/2026/04/16/survivor-50-power-rankings-fallout-after-episode-8/",
         rankings: [
-            { id: "ricky",     ep6Rank: 2,  reasoning: "Ranked #2 after EP6 and continues to be the safest player in the game. Quiet, well-liked, no target. Survived the Blood Moon on the purple group with Christian and has deep connections across the merged tribe. Zero votes against all season." },
-            { id: "christian", ep6Rank: 1,  reasoning: "Ranked #1 after EP6 and still the most strategically active player. Won immunity during the Blood Moon, keeping himself safe. In EP7 he was part of the majority that sent Dee home. Brilliant but visible — he needs to keep winning or find protection." },
-            { id: "cirie",     ep6Rank: 3,  reasoning: "Ranked #3 after EP6 and rising. Holds the Extra Vote and is at the center of a powerful trio with Ozzy and Rizo. Survived the Blood Moon on the teal group, voted out Colby. In EP7 she was part of the 8-vote Dee majority. Connected to everyone, threatening to no one." },
-            { id: "rizo",      ep6Rank: 7,  reasoning: "Ranked #7 after EP6 but trending up fast. Avoided the Blood Moon entirely on Exile with Ozzy, where they bonded. Still holds his Boomerang Idol. In EP7 Coach recruited him into the Four Horsemen alliance, giving him dual alliance coverage (Cirie trio + Coach's group). The most well-connected player in the game." },
-            { id: "stephanie", ep6Rank: 11, reasoning: "Ranked #11 after EP6 but EP7 was her biggest episode yet. Won a Steal-a-Vote on a journey and won immunity during the Blood Moon. Now holds a powerful advantage and has proven challenge ability. Rising fast." },
-            { id: "ozzy",      ep6Rank: 6,  reasoning: "Ranked #6 after EP6. Dodged the Blood Moon on Exile with Rizo, forming a key bond. Won individual immunity in EP7. Holds a Boomerang Idol and is part of the Cirie-Rizo trio. Challenge beast with tools — but his volatility (the Mike blindside grudge) makes him unpredictable." },
-            { id: "emily",     ep6Rank: 5,  reasoning: "Ranked #5 after EP6. Survived the Blood Moon on the teal group and voted correctly. In EP7 she was part of the majority. Loyal to Christian but can't keep secrets — Dee's elimination partly came from information Emily leaked. Useful ally, risky confidant." },
-            { id: "coach",     ep6Rank: 13, reasoning: "Ranked #13 after EP6 but made big moves in EP7. Formed the Four Horsemen alliance (with Jonathan, Joe, Rizo) and orchestrated the split vote targeting Dee. His plan leaked and his haiku-fueled meltdowns drew attention, but the vote went his way. He's playing hard — maybe too hard." },
-            { id: "aubry",     ep6Rank: 8,  reasoning: "Ranked #8 after EP6. On the purple group during Blood Moon, she had her idol as insurance against Genevieve — but didn't need it after Genevieve drew a bad Shot in the Dark. Played her Boomerang Idol in EP7 (negating 0 votes), so she's now unprotected. Genevieve rivalry is over but she used her biggest tool." },
-            { id: "tiff",      ep6Rank: 9,  reasoning: "Ranked #9 after EP6. Survived the Blood Moon on the orange group. In EP7 she received 4 votes as the split-vote decoy target but survived. Steady player who stays out of trouble, but being a decoy target means she's expendable to the majority." },
-            { id: "chrissy",   ep6Rank: 12, reasoning: "Ranked #12 after EP6. Made a key move during the Blood Moon — her game-theory argument convinced Jonathan to flip and vote out Kamilla. Quiet profile but showing strategic chops when it counts." },
-            { id: "joe",       ep6Rank: 10, reasoning: "Ranked #10 after EP6. Part of Coach's Four Horsemen alliance in EP7. Zero confessionals in EP7 — the invisible edit continues. He's a number for Coach's alliance but has shown no independent strategic agency." },
-            { id: "jonathan",  ep6Rank: 14, reasoning: "Ranked #14 after EP6. Flipped to vote out Kamilla during the Blood Moon, then aligned with Coach's Four Horsemen in EP7. He's found a new alliance after losing Charlie in EP5, but he's a follower, not a driver. Limited strategic options." },
-            { id: "dee",       ep6Rank: 4,  reasoning: "Voted out Episode 7. Ranked #4 after EP6 but became the first jury member after Coach's alliance targeted her. Leaked info about Rizo's idol, which turned allies against her. Played her Shot in the Dark at tribal but wasn't safe. A proven winner whose information-sharing habit proved fatal." },
-            { id: "kamilla",   ep6Rank: 17, reasoning: "Voted out Episode 6. Blindsided 3-2 in the Blood Moon's orange group when Jonathan flipped to vote with Chrissy and Stephenie. Had just made the biggest move of her game in EP5 as the swing vote — but the random Blood Moon draw ended her run before she could build on it." },
-            { id: "genevieve", ep6Rank: 16, reasoning: "Voted out Episode 6. Drew the worst possible Blood Moon group — landing with rival Aubry, who had an idol. Played her Shot in the Dark but wasn't safe. Voted out unanimously 4-0. Found two Boomerang Idols this season but never got to use one for herself." },
-            { id: "colby",     ep6Rank: 15, reasoning: "Voted out Episode 6. Still carried his Lost Vote disadvantage and couldn't vote at his own elimination. The teal group saw his social influence as the bigger threat over Coach. Emotional exit: 'Find the joy in this game.'" }
+            { id: "christian", ep7Rank: 3,  reasoning: "Ranked #1 after EP8 (+2). The most strategically active player in the game. Planted a fake idol with Rick to trigger a live tribal. Part of the majority that dismantled Coach's Four Horsemen. Brilliant and visible — but has the numbers to stay safe." },
+            { id: "cirie",     ep7Rank: 5,  reasoning: "Ranked #2 after EP8 (+3). Won the Exile Island coconut challenge and earned a vote at tribal — used it to help dismantle the Four Horsemen. Still holds her Extra Vote. At the center of the power alliance with Ozzy and Rizo. Connected to everyone and threatening to no one." },
+            { id: "ricky",     ep7Rank: 1,  reasoning: "Ranked #3 after EP8 (-2). Still one of the safest players in the game — zero votes against all season. Was ranked #1 coming in but slipped slightly as Christian and Cirie's moves got louder. His quiet game remains his biggest asset." },
+            { id: "rizo",      ep7Rank: 6,  reasoning: "Ranked #4 after EP8 (+2). Still holds his Boomerang Idol and runs dual alliance coverage (Cirie trio + was in Coach's Four Horsemen). Coach's elimination removes one of his allies but also removes the main target on his group. The best-positioned player in the game." },
+            { id: "aubry",     ep7Rank: 7,  reasoning: "Ranked #5 after EP8 (+1). Rising steadily without her idol (played EP7, negated 0 votes). Survived the Blood Moon, outlasted her rival Genevieve, and is now in a strong position post-merge with no clear enemies left. Unprotected but trusted." },
+            { id: "ozzy",      ep7Rank: 8,  reasoning: "Ranked #6 after EP8 (+2). Still holds his Boomerang Idol and won individual immunity in EP7. Sits in the Cirie-Rizo trio and is a proven challenge threat. Volatility from earlier feuds has faded — he looks safer than ever." },
+            { id: "jonathan",  ep7Rank: 4,  reasoning: "Ranked #7 after EP8 (-3). Lost two of his closest allies (Coach and Chrissy) in one vote. Was on the wrong side of the numbers. Needs to rebuild relationships fast or he'll be the next obvious target without a shield." },
+            { id: "emily",     ep7Rank: 10, reasoning: "Ranked #8 after EP8 (+2). Loyal to Christian and consistently on the right side of the vote. Her weakness remains her inability to keep secrets, but in EP8 it worked in her favor. Steady mid-game presence." },
+            { id: "tiff",      ep7Rank: 13, reasoning: "Ranked #9 after EP8 (+5). Biggest riser of the episode — won immunity alongside Joe in the Double Duo twist. Has quietly stayed out of trouble all post-merge. A challenge win and zero drama is a great combination." },
+            { id: "stephanie", ep7Rank: 9,  reasoning: "Ranked #10 after EP8 (-1). Still holds her Steal-a-Vote advantage. Voted correctly in EP8 but had a quieter episode after her EP7 peak. The advantage remains her key insurance policy." },
+            { id: "joe",       ep7Rank: 12, reasoning: "Ranked #11 after EP8 (+2). Won immunity in EP8 alongside Tiffany. The invisible edit continues — he's a number for alliances but hasn't shown independent strategic agency. Safe for now due to low threat perception." },
+            { id: "coach",     ep7Rank: 2,  reasoning: "Voted out Episode 8. Ranked #2 after EP7 but his Four Horsemen alliance fell apart when the plan to target Dee leaked and he overplayed. Played a Shot in the Dark (not safe). Eliminated 11-1-1 in the Double Duo twist. Jury member #2." },
+            { id: "chrissy",   ep7Rank: 11, reasoning: "Voted out Episode 8. Caught in the Double Duo crossfire alongside Coach. Lost her closest ally and was eliminated before she could rebuild. Jury member #3." },
+            { id: "dee",       ep7Rank: 14, reasoning: "Voted out Episode 7. First jury member. Ranked #4 after EP6 but became the first jury member after Coach's alliance targeted her. Leaked info about Rizo's idol, which turned allies against her." },
+            { id: "kamilla",   ep7Rank: 17, reasoning: "Voted out Episode 6. Blindsided 3-2 in the Blood Moon's orange group when Jonathan flipped to vote with Chrissy and Stephenie." },
+            { id: "genevieve", ep7Rank: 16, reasoning: "Voted out Episode 6. Drew the worst possible Blood Moon group — landing with rival Aubry, who had an idol. Voted out unanimously 4-0." },
+            { id: "colby",     ep7Rank: 15, reasoning: "Voted out Episode 6. Carried his Lost Vote disadvantage and couldn't vote at his own elimination. Emotional exit: 'Find the joy in this game.'" }
         ]
     };
 
@@ -992,7 +1001,7 @@
             const team = TEAMS[c.team];
             const winPct = getContestantNormalizedOdds(c);
             const myRank = i + 1;
-            const prevRank = entry.ep6Rank || entry.ep3Rank;
+            const prevRank = entry.ep7Rank || entry.ep6Rank || entry.ep3Rank;
             const diff = prevRank - myRank;
             let movHtml;
             if (diff > 0) {
@@ -1009,7 +1018,7 @@
                     ${movHtml}
                     <div>
                         <div class="rank-player-name" style="color: ${team.color};">${c.name}</div>
-                        <div class="rank-player-meta" style="color: var(--text-muted);">${team.name} &middot; EP6 rank: #${prevRank}</div>
+                        <div class="rank-player-meta" style="color: var(--text-muted);">${team.name} &middot; EP7 rank: #${prevRank}</div>
                         <div class="rank-reasoning">${entry.reasoning}</div>
                     </div>
                     <div class="rank-winpct" style="color: ${isElim ? 'var(--text-muted)' : team.color};">
@@ -1025,7 +1034,7 @@
             <div class="rankings-source">
                 Rankings updated after Episode ${updatedAfterEpisode} (${epDate}) &middot;
                 Based on <a href="${sourceUrl}" target="_blank">${sourceLabel}</a> &middot;
-                Movement &#9650;&#9660; vs. EP3 DK rankings &middot; Win % = normalized odds weight
+                Movement &#9650;&#9660; vs. EP7 DK rankings &middot; Win % = normalized odds weight
             </div>
         `;
     }
