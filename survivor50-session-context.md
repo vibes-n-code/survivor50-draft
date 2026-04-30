@@ -3,7 +3,7 @@
 ## Website
 - Single file: `/Users/nick/Documents/AI/Projects/survivor50-draft/index.html`
 - No backend — all data is embedded as JavaScript constants in the HTML file
-- **Currently updated through Episode 8** (Apr 15, 2026)
+- **Currently updated through Episode 10** (Apr 29, 2026)
 
 ## Machine Notes
 - All personal projects now run on this computer (username: nick)
@@ -11,7 +11,7 @@
 
 ---
 
-## Current Cast Status (after Ep 8)
+## Current Cast Status (after Ep 10)
 
 ### Team Lizzy (purple)
 | ID | Name | Status |
@@ -28,9 +28,9 @@
 |----|------|--------|
 | aubry | Aubry Bracco | ALIVE (idol used Ep 7) |
 | joe | Joe Hunter | ALIVE |
-| ricky | Rick Devens | ALIVE |
+| ricky | Rick Devens | ALIVE — holds Super Beware Idol (won via MrBeast coin-flip Ep 10) |
 | coach | Coach Wade | ELIMINATED Ep 8 (Voted Out, Double Duo twist) — jury #2 |
-| stephanie | Stephenie LaGrossa | ALIVE — holds Steal-a-Vote |
+| stephanie | Stephenie LaGrossa | ELIMINATED Ep 10 (Voted Out 8-2; played Steal-a-Vote on Rick but Rick was immune) — jury #5 |
 | savannah | Savannah Louie | ELIMINATED Ep 2 (Voted Out) |
 
 ### Team Nick (green)
@@ -55,13 +55,14 @@
 
 ---
 
-## Active Advantages (after Ep 8)
+## Active Advantages (after Ep 10)
 | ID | Name | Holder | Status | Notes |
 |----|------|--------|--------|-------|
 | boomerang-idol-ozzy | Billie Eilish Boomerang Idol | ozzy | active | Boomerang clause void (Genevieve eliminated) |
 | boomerang-idol-genevieve | Billie Eilish Boomerang Idol | rizo | active | Found by Genevieve, gifted to Rizo (Ep 4) |
 | extra-vote-cirie | Extra Vote | cirie | active | Q→Ozzy→Cirie chain |
-| steal-a-vote-stephanie | Steal-a-Vote | stephanie | active | Won on journey in Ep 7 |
+| super-beware-idol-rick | Super Beware Advantage Idol | ricky | active | Won via MrBeast coin-flip Ep 10; bumped prize to $2M |
+| steal-a-vote-stephanie | Steal-a-Vote | stephanie | used | Played Ep 10 on Rick (already immune); no impact |
 | boomerang-idol-aubry | Billie Eilish Boomerang Idol | aubry | used | Played Ep 7, negated 0 votes |
 
 ---
@@ -70,6 +71,8 @@
 1. Dee Valladares (Ep 7)
 2. Coach Wade (Ep 8)
 3. Chrissy Hofbeck (Ep 8)
+4. Christian Hubicki (Ep 9)
+5. Stephenie LaGrossa (Ep 10)
 
 ---
 

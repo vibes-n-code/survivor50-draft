@@ -446,7 +446,7 @@
     const PHOTO_BASE = "https://entertainmentnow.com/wp-content/uploads/2026/01/survivor-season-50-cast-spoilers-first-photos-";
 
     // ==================== CONTESTANT DATA ====================
-    // Odds weights updated after Episode 8 — derived from EP8 DK Network power rankings
+    // Odds weights derived from EP9 DK Network power rankings; EP10 zeroed Stephenie (eliminated)
     const CONTESTANTS = [
         // Team Lizzy
         { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 8.0, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
@@ -461,7 +461,7 @@
         { id: "joe", name: "Joe Hunter", team: "tanner", season: "Season 48", odds: 4.5, photo: PHOTO_BASE + "joe-hunter.jpg", initials: "JH" },
         { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 4.0, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
         { id: "coach", name: "Coach Wade", team: "tanner", season: "Tocantins, HvV, South Pacific", odds: 0, photo: PHOTO_BASE + "benjamin-coach-wade.jpg", initials: "CW" },
-        { id: "stephanie", name: "Stephenie LaGrossa", team: "tanner", season: "Palau, Guatemala, HvV", odds: 5.0, photo: PHOTO_BASE + "stephanie-lagrossa-kendrick.jpg", initials: "SL" },
+        { id: "stephanie", name: "Stephenie LaGrossa", team: "tanner", season: "Palau, Guatemala, HvV", odds: 0, photo: PHOTO_BASE + "stephanie-lagrossa-kendrick.jpg", initials: "SL" },
         { id: "savannah", name: "Savannah Louie", team: "tanner", season: "Season 49 (Winner)", odds: 0, photo: PHOTO_BASE + "savannah-louie.jpg", initials: "SV" },
 
         // Team Nick
@@ -560,6 +560,14 @@
             eliminations: [
                 { id: "christian", method: "Voted Out", details: "Jeff Probst joined the immunity challenge as a contestant (Jimmy Fallon-inspired twist) — Joe, Tiff, Ozzy, and Jonathan each bet they'd outlast him. Jeff tapped early, earning the tribe season-long rice. Joe won individual immunity and sent Christian on a journey. Christian played for the 'One in the Urn' Fallon advantage but failed the puzzle under time pressure — penalty: first player in Survivor history forced to cast a vote for himself, Shot in the Dark blocked. Pre-tribal, Christian gave his Shot in the Dark to Jonathan as a trust gesture; Jonathan voted him out anyway. Christian's earlier leak of an Ozzy-target plan to Cirie backfired (Cirie warned Ozzy), and Emily's floating of an Ozzy vote put a target on herself. Alliance took the easy kill. Voted out 6-3-2 (6 Christian including forced self-vote, 3 Rick Devens, 2 Ozzy). No idols played. Jury member #4." }
             ]
+        },
+        {
+            number: 10,
+            airDate: "2026-04-29",
+            title: "A Side Dish of Chaos",
+            eliminations: [
+                { id: "stephanie", method: "Voted Out", details: "Survivor Auction returned with themed bids (Comfort, Chaos, or both). MrBeast crashed tribal council with the 'Super Beware Advantage' — a coin-flip stunt: heads = immunity + idol + prize pool boost to $2M; tails = instant elimination, jury duty, prize stays at $1M. Rick Devens — already pegged as target #1 with his fake-idol baggage from EP8 — volunteered, called the flip, and won. The advantage locked in the $2M anniversary prize for the remaining players (only the second time ever, after Winners at War). Stephenie used her Steal-a-Vote to take Rick's vote at tribal, but with Rick now immune, the alliance had no scramble. Cirie/Ozzy/Rizo bloc held; Stephenie eliminated 8-2. Jury member #5." }
+            ]
         }
         // Future episodes will be added here as they air
     ];
@@ -644,9 +652,19 @@
             holder: "stephanie",
             type: "advantage",
             icon: "🎯",
-            status: "active",
+            status: "used",
             foundEpisode: 7,
-            description: "Stephenie won this advantage on a journey in Episode 7 by outlasting a draining pot of water challenge. Allows the holder to steal another player's vote at Tribal Council, removing their vote and casting it herself."
+            description: "Stephenie won this advantage on a journey in Episode 7 by outlasting a draining pot of water challenge. Played at Episode 10 tribal council to steal Rick Devens' vote — but with Rick already immune from the MrBeast coin-flip stunt, the steal had no impact. Stephenie was voted out 8-2 the same night."
+        },
+        {
+            id: "super-beware-idol-rick",
+            name: "Super Beware Advantage Idol",
+            holder: "ricky",
+            type: "idol",
+            icon: "\uD83D\uDEE1\uFE0F",
+            status: "active",
+            foundEpisode: 10,
+            description: "Acquired by Rick Devens in Episode 10 by winning a coin-flip stunt presented by MrBeast as the 'Super Beware Advantage.' Heads granted immunity for the night, an idol going forward, and locked in the $2 million anniversary prize for the remaining players (only the second time the prize has been doubled, after Winners at War). Tails would have meant instant elimination."
         }
     ];
 
