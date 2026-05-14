@@ -449,24 +449,24 @@
     // Odds weights derived from EP9 DK Network power rankings; EP10 zeroed Stephenie (eliminated)
     const CONTESTANTS = [
         // Team Lizzy
-        { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 8.0, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
-        { id: "ozzy", name: "Ozzy Lusth", team: "lizzy", season: "Cook Islands, Micro, SP, GC", odds: 6.0, photo: PHOTO_BASE + "ozzy-lutsh.jpg", initials: "OL" },
+        { id: "cirie", name: "Cirie Fields", team: "lizzy", season: "Panama, Micronesia, HvV, GC", odds: 0, photo: PHOTO_BASE + "cirie-fields.jpg", initials: "CF" },
+        { id: "ozzy", name: "Ozzy Lusth", team: "lizzy", season: "Cook Islands, Micro, SP, GC", odds: 0, photo: PHOTO_BASE + "ozzy-lutsh.jpg", initials: "OL" },
         { id: "chrissy", name: "Chrissy Hofbeck", team: "lizzy", season: "Heroes vs. Healers vs. Hustlers", odds: 0, photo: PHOTO_BASE + "chrissy-hofbeck.jpg", initials: "CH" },
         { id: "angelina", name: "Angelina Keeley", team: "lizzy", season: "David vs. Goliath", odds: 0, photo: PHOTO_BASE + "angelina-keeley.jpg", initials: "AK" },
         { id: "colby", name: "Colby Donaldson", team: "lizzy", season: "Outback, All-Stars, HvV", odds: 0, photo: PHOTO_BASE + "colby-donaldson.jpg", initials: "CD" },
         { id: "jenna", name: "Jenna Lewis", team: "lizzy", season: "Borneo, All-Stars", odds: 0, photo: PHOTO_BASE + "jenna-lewis-dougherty.jpg", initials: "JL" },
 
         // Team Tanner
-        { id: "aubry", name: "Aubry Bracco", team: "tanner", season: "Kaoh Rong, GC, Edge of Extinction", odds: 6.5, photo: PHOTO_BASE + "aubry-bracco.jpg", initials: "AB" },
+        { id: "aubry", name: "Aubry Bracco", team: "tanner", season: "Kaoh Rong, GC, Edge of Extinction", odds: 6.0, photo: PHOTO_BASE + "aubry-bracco.jpg", initials: "AB" },
         { id: "joe", name: "Joe Hunter", team: "tanner", season: "Season 48", odds: 4.5, photo: PHOTO_BASE + "joe-hunter.jpg", initials: "JH" },
-        { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 4.0, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
+        { id: "ricky", name: "Rick Devens", team: "tanner", season: "Edge of Extinction", odds: 0, photo: PHOTO_BASE + "rick-devens.jpg", initials: "RD" },
         { id: "coach", name: "Coach Wade", team: "tanner", season: "Tocantins, HvV, South Pacific", odds: 0, photo: PHOTO_BASE + "benjamin-coach-wade.jpg", initials: "CW" },
         { id: "stephanie", name: "Stephenie LaGrossa", team: "tanner", season: "Palau, Guatemala, HvV", odds: 0, photo: PHOTO_BASE + "stephanie-lagrossa-kendrick.jpg", initials: "SL" },
         { id: "savannah", name: "Savannah Louie", team: "tanner", season: "Season 49 (Winner)", odds: 0, photo: PHOTO_BASE + "savannah-louie.jpg", initials: "SV" },
 
         // Team Nick
         { id: "dee", name: "Dee Valladares", team: "nick", season: "Season 45 (Winner)", odds: 0, photo: PHOTO_BASE + "dee-valladares.jpg", initials: "DV" },
-        { id: "jonathan", name: "Jonathan Young", team: "nick", season: "Season 42", odds: 5.5, photo: PHOTO_BASE + "jonathan-young.jpg", initials: "JY" },
+        { id: "jonathan", name: "Jonathan Young", team: "nick", season: "Season 42", odds: 7.0, photo: PHOTO_BASE + "jonathan-young.jpg", initials: "JY" },
         { id: "rizo", name: "Rizo Velovic", team: "nick", season: "Season 49", odds: 7.5, photo: PHOTO_BASE + "rizo-velovic.jpg", initials: "RV" },
         { id: "q", name: "Q Burdette", team: "nick", season: "Season 46", odds: 0, photo: PHOTO_BASE + "quintavius-q-burdette.jpg", initials: "QB" },
         { id: "kyle", name: "Kyle Fraser", team: "nick", season: "Season 48 (Winner)", odds: 0, photo: PHOTO_BASE + "kyle-fraser.jpg", initials: "KF" },
@@ -476,9 +476,9 @@
         { id: "christian", name: "Christian Hubicki", team: "casey", season: "David vs. Goliath", odds: 0, photo: PHOTO_BASE + "christian-hubicki.jpg", initials: "CH" },
         { id: "charlie", name: "Charlie Davis", team: "casey", season: "Season 46", odds: 0, photo: PHOTO_BASE + "charlie-davis.jpg", initials: "CD" },
         { id: "mike", name: "Mike White", team: "casey", season: "David vs. Goliath", odds: 0, photo: PHOTO_BASE + "mike-white.jpg", initials: "MW" },
-        { id: "emily", name: "Emily Flippen", team: "casey", season: "Season 45", odds: 4.5, photo: PHOTO_BASE + "emily-flippen.jpg", initials: "EF" },
+        { id: "emily", name: "Emily Flippen", team: "casey", season: "Season 45", odds: 0, photo: PHOTO_BASE + "emily-flippen.jpg", initials: "EF" },
         { id: "kamilla", name: "Kamila Karthigesu", team: "casey", season: "Season 48", odds: 0, photo: PHOTO_BASE + "kamilla-karthigesu.jpg", initials: "KK" },
-        { id: "tiff", name: "Tiffany Ervin", team: "casey", season: "Season 46", odds: 5.5, photo: PHOTO_BASE + "tiffany-ervin.jpg", initials: "TE" }
+        { id: "tiff", name: "Tiffany Ervin", team: "casey", season: "Season 46", odds: 5.0, photo: PHOTO_BASE + "tiffany-ervin.jpg", initials: "TE" }
     ];
 
     // ==================== EPISODE DATA ====================
@@ -568,6 +568,24 @@
             eliminations: [
                 { id: "stephanie", method: "Voted Out", details: "Survivor Auction returned with themed bids (Comfort, Chaos, or both). MrBeast crashed tribal council with the 'Super Beware Advantage' — a coin-flip stunt: heads = immunity + idol + prize pool boost to $2M; tails = instant elimination, jury duty, prize stays at $1M. Rick Devens — already pegged as target #1 with his fake-idol baggage from EP8 — volunteered, called the flip, and won. The advantage locked in the $2M anniversary prize for the remaining players (only the second time ever, after Winners at War). Stephenie used her Steal-a-Vote to take Rick's vote at tribal, but with Rick now immune, the alliance had no scramble. Cirie/Ozzy/Rizo bloc held; Stephenie eliminated 8-2. Jury member #5." }
             ]
+        },
+        {
+            number: 11,
+            airDate: "2026-05-06",
+            title: "Everyone Will Be Shooketh",
+            eliminations: [
+                { id: "emily", method: "Voted Out", details: "Double-elimination split-tribal twist: 9 players were divided into two random groups of four for separate tribal councils, with the immunity winner serving as a floater able to attend and vote at both. Tiffany originally won the balance challenge, but production reviewed the footage and disqualified her — both feet were still on the platform after the countdown — and awarded immunity to Jonathan. Tribal #1 (Cirie, Rick Devens, Emily, Tiffany + Jonathan): Cirie talked Rick into believing she'd protect him from a flush attempt; Rick instead played his Super Beware Advantage Idol on himself. Cirie also played her Extra Vote, producing a 2-2-2 tie on the original count. Emily was eliminated 2-1 on the revote. Jury member #6." },
+                { id: "ozzy", method: "Voted Out", details: "Tribal #2 (Ozzy, Aubry, Joe, Rizo + Jonathan): Jonathan orchestrated the blindside against Ozzy with Joe, Aubry, and Rizo. Rizo deliberately told Ozzy he was safe and didn't need to play his idol — then voted with the alliance. Ozzy went home 4-1 with his Boomerang Idol still in his pocket; the boomerang clause was already void (Genevieve eliminated EP6), so the idol exits the game with him. Jury member #7." }
+            ]
+        },
+        {
+            number: 12,
+            airDate: "2026-05-13",
+            title: "Inconceivable",
+            eliminations: [
+                { id: "ricky", method: "Voted Out", details: "Double-elimination episode set the Final 5. Day 22 immunity ('A Bit Tipsy' block-stacking) went to Joe Hunter, who shared his barbecue reward with Cirie and Rizo. With his Super Beware Idol burned at EP11 tribal #1 and no remaining protection, Rick was the obvious target — the alliance wanted to kill the underdog narrative before finale night. Rick played his Shot in the Dark and did not pull 'safe.' Voted out 6-0. Jury member #8." },
+                { id: "cirie", method: "Voted Out", details: "Day 23 immunity went to Tiffany Ervin, who solved the 'Inconceivable' word puzzle for her win — her name had been circulating as the swing target, making the immunity especially clutch. Aubry and Rizo conferred and locked the blindside on Cirie; Rizo deliberated about playing his Boomerang Idol but kept it in his pocket and the gamble paid off. Cirie tried to redirect the vote toward Aubry but couldn't move the bloc. Voted out 4-2. Jury member #9." }
+            ]
         }
         // Future episodes will be added here as they air
     ];
@@ -582,9 +600,9 @@
             holder: "ozzy",
             type: "idol",
             icon: "\uD83D\uDEE1\uFE0F",
-            status: "active",
+            status: "eliminated",
             foundEpisode: 1,
-            description: "Genevieve found the Boomerang Idol clue in Episode 1 but the rules forced her to send the idol to someone on another tribe. She chose Ozzy, and it was secretly placed in his bag. Ozzy can only use it for himself and cannot give it away. The original boomerang clause (return to Genevieve if Ozzy is voted out) is effectively void since Genevieve was eliminated in Episode 6."
+            description: "Genevieve found the Boomerang Idol clue in Episode 1 but the rules forced her to send the idol to someone on another tribe. She chose Ozzy, and it was secretly placed in his bag. Ozzy was voted out 4-1 in Episode 11 with the idol still in his pocket. The boomerang clause (return to Genevieve) was already void from her EP6 elimination, so the idol exits the game with Ozzy."
         },
         {
             id: "boomerang-idol-aubry",
@@ -602,9 +620,9 @@
             holder: "cirie",
             type: "advantage",
             icon: "\uD83C\uDFAF",
-            status: "active",
+            status: "used",
             foundEpisode: 1,
-            description: "Q Burdette received this on Exile Island in Episode 1 and gave it to Ozzy Lusth. Ozzy then re-gifted it to Cirie Fields in Episode 2. Allows the holder to cast an additional vote at Tribal Council."
+            description: "Q Burdette received this on Exile Island in Episode 1 and gave it to Ozzy Lusth. Ozzy then re-gifted it to Cirie Fields in Episode 2. Cirie used the Extra Vote at Episode 11 tribal council #1 as part of the plan to flush Rick Devens' idol — the play forced an initial 2-2-2 tie, which set up Emily's 2-1 elimination on the revote."
         },
         {
             id: "block-a-vote-savannah",
@@ -662,39 +680,40 @@
             holder: "ricky",
             type: "idol",
             icon: "\uD83D\uDEE1\uFE0F",
-            status: "active",
+            status: "used",
             foundEpisode: 10,
-            description: "Acquired by Rick Devens in Episode 10 by winning a coin-flip stunt presented by MrBeast as the 'Super Beware Advantage.' Heads granted immunity for the night, an idol going forward, and locked in the $2 million anniversary prize for the remaining players (only the second time the prize has been doubled, after Winners at War). Tails would have meant instant elimination."
+            description: "Acquired by Rick Devens in Episode 10 by winning a coin-flip stunt presented by MrBeast as the 'Super Beware Advantage.' Heads granted immunity for the night, an idol going forward, and locked in the $2 million anniversary prize for the remaining players (only the second time the prize has been doubled, after Winners at War). Rick played the idol on himself at Episode 11 tribal council #1, nullifying the votes against him. The play forced a 2-2-2 tie on the original count and led to Emily's 2-1 elimination on the revote."
         }
     ];
 
     // ==================== POWER RANKINGS ====================
-    // Last updated: after Episode 9 (Apr 22, 2026)
-    // Based on: EP9 DK Network power rankings
-    // EP9 Rankings: https://dknetwork.draftkings.com/2026/04/23/survivor-50-power-rankings-fallout-after-episode-9/
+    // Last updated: after Episode 11 (May 6, 2026)
+    // Based on: EP11 DK Network power rankings (published May 7, 2026)
+    // EP11 Rankings: https://dknetwork.draftkings.com/2026/05/07/survivor-50-power-rankings-episode-11-recap-reactions/
+    // Note: rankings predate EP12; Cirie (#1) and Rick (#5) were voted out in EP12.
     const POWER_RANKINGS = {
-        updatedAfterEpisode: 9,
-        updatedDate: "2026-04-22",
-        sourceLabel: "EP9 DK Network Power Rankings",
-        sourceUrl: "https://dknetwork.draftkings.com/2026/04/23/survivor-50-power-rankings-fallout-after-episode-9/",
+        updatedAfterEpisode: 11,
+        updatedDate: "2026-05-06",
+        sourceLabel: "EP11 DK Network Power Rankings",
+        sourceUrl: "https://dknetwork.draftkings.com/2026/05/07/survivor-50-power-rankings-episode-11-recap-reactions/",
         rankings: [
-            { id: "cirie",     ep8Rank: 2,  reasoning: "Ranked #1 after EP9 (+1). Continues to skate by despite being one of the show's all-time greats — still hasn't been clocked as a real threat. Strong relationships with Ozzy and Rizo insulate her. Christian's failed pitch to vote her out backfired. Challenge weakness hasn't hurt her yet." },
-            { id: "rizo",      ep8Rank: 4,  reasoning: "Ranked #2 after EP9 (+2). Quieter episode by design after earlier big moves. Held firm on voting out Christian when others floated Emily, and the call proved correct. Still holds a Boomerang Idol, protected by Cirie and Ozzy, and drives voting decisions. Few players are better positioned." },
-            { id: "aubry",     ep8Rank: 5,  reasoning: "Ranked #3 after EP9 (+2). Spent much of the season on the bottom but has quietly made herself invisible. Tossed the Christian-gifted idol post-merge. Working relationship with Jonathan adds security. Nobody is even considering voting her out — an extended run to FTC is realistic." },
-            { id: "ozzy",      ep8Rank: 6,  reasoning: "Ranked #4 after EP9 (+2). Still holds his Boomerang Idol and sits inside the dominant Cirie-Rizo trio. Cirie tipped him off to Christian's pitch to vote him out, which removed the only real threat on his radar. Proven challenge threat with insulation on all sides." },
-            { id: "jonathan",  ep8Rank: 7,  reasoning: "Ranked #5 after EP9 (+2). Big rebound after losing Coach and Chrissy last week. Accepted Christian's Shot in the Dark as a trust gesture — and voted him out anyway. Emerging as a key strategic partner with Aubry and the majority. Back in the numbers." },
-            { id: "tiff",      ep8Rank: 9,  reasoning: "Ranked #6 after EP9 (+3). Continues to rise quietly. Gaining momentum in alliance dynamics and staying out of trouble post-merge. Was one of the voices floating Emily as the EP9 target — showing more strategic agency than earlier." },
-            { id: "stephanie", ep8Rank: 10, reasoning: "Ranked #7 after EP9 (+3). Improving position among the remaining players. Still holds her Steal-a-Vote advantage — a real insurance policy as numbers tighten. Voted correctly again in EP9." },
-            { id: "joe",       ep8Rank: 11, reasoning: "Ranked #8 after EP9 (+3). Won individual immunity in EP9 and sent Christian on the journey that triggered his self-vote penalty. Still on a quiet edit, but has two immunity wins on his resume now. Safe via low threat perception." },
-            { id: "emily",     ep8Rank: 8,  reasoning: "Ranked #9 after EP9 (-1). The Christian vote very nearly became an Emily vote — Cirie and Tiffany actively pitched flipping. Nobody outside Rick seems to value keeping her around. Reputation and resume are shallow heading into the late game." },
-            { id: "ricky",     ep8Rank: 3,  reasoning: "Ranked #10 after EP9 (-7). Biggest faller of the episode. The EP8 fake idol plant is now haunting him — most players believe it's real, making him target #1. His minority three-person alliance lost Christian, and Aubry is already drifting away. Reputation as a scrambler is finally catching up." },
-            { id: "christian", ep8Rank: 1,  reasoning: "Voted out Episode 9. Ranked #1 after EP8 but journey disaster unraveled everything — failed the 'One in the Urn' puzzle and was forced to cast the first self-vote in Survivor history. Gave his Shot in the Dark to Jonathan; Jonathan voted him out anyway. Eliminated 6-3-2. Jury member #4." },
-            { id: "coach",     ep7Rank: 2,  reasoning: "Voted out Episode 8. Four Horsemen alliance fell apart when the plan to target Dee leaked. Played a Shot in the Dark (not safe). Eliminated 11-1-1 in the Double Duo twist. Jury member #2." },
-            { id: "chrissy",   ep7Rank: 11, reasoning: "Voted out Episode 8. Caught in the Double Duo crossfire alongside Coach. Lost her closest ally and was eliminated before she could rebuild. Jury member #3." },
-            { id: "dee",       ep7Rank: 14, reasoning: "Voted out Episode 7. First jury member. Coach's alliance targeted her after she leaked info about Rizo's idol, which turned allies against her." },
-            { id: "kamilla",   ep7Rank: 17, reasoning: "Voted out Episode 6. Blindsided 3-2 in the Blood Moon's orange group when Jonathan flipped to vote with Chrissy and Stephenie." },
-            { id: "genevieve", ep7Rank: 16, reasoning: "Voted out Episode 6. Drew the worst possible Blood Moon group — landing with rival Aubry, who had an idol. Voted out unanimously 4-0." },
-            { id: "colby",     ep7Rank: 15, reasoning: "Voted out Episode 6. Carried his Lost Vote disadvantage and couldn't vote at his own elimination. Emotional exit: 'Find the joy in this game.'" }
+            { id: "cirie",     ep9Rank: 1,  reasoning: "Ranked #1 after EP11 (—). Lost Ozzy but the Rizo and Tiffany relationships are still solid, and her EP11 Extra Vote play to force the 2-2-2 tie / flush Rick's idol was called a 'game-saving move.' Voted out 4-2 at EP12's second tribal council the following week after Tiffany won immunity — jury member #9." },
+            { id: "rizo",      ep9Rank: 2,  reasoning: "Ranked #2 after EP11 (—). Held firm in the dominant alliance, executed the Ozzy blindside cleanly, and still has the Boomerang Idol. Kept the idol in his pocket through EP12 and made the Final 5." },
+            { id: "jonathan",  ep9Rank: 5,  reasoning: "Ranked #3 after EP11 (+2). Won immunity in EP11, was the floater between both split tribals, and orchestrated the Ozzy blindside. Locked Final 5 placement and is a credible winner pick going into the finale." },
+            { id: "aubry",     ep9Rank: 3,  reasoning: "Ranked #4 after EP11 (-1). Positioned as a contender but ducked a vote in EP12 second tribal when Cirie tried to redirect to her. Conferred with Rizo to lock Cirie's blindside; reaches the Final 5 with strategic credit but a thin jury resume." },
+            { id: "ricky",     ep9Rank: 10, reasoning: "Ranked #5 after EP11 (+5). Survived EP11 by playing his Super Beware Idol on himself, but the idol burn left him exposed. With Joe immune and no protection at EP12 tribal #1, the Shot in the Dark didn't save him — voted out 6-0. Jury member #8." },
+            { id: "tiff",      ep9Rank: 6,  reasoning: "Ranked #6 after EP11 (—). Had immunity stripped on a footwork DQ review in EP11. Hit back in EP12 by winning the 'Inconceivable' word puzzle when her name was the floated alternate — made the Final 5 on her own legs." },
+            { id: "joe",       ep9Rank: 8,  reasoning: "Ranked #7 after EP11 (+1). Path called 'slim' but he keeps winning when it counts — took the EP12 day-22 immunity to lock his Final 5 spot. Low threat perception is the entire game plan." },
+            { id: "ozzy",      ep9Rank: 4,  reasoning: "Voted out Episode 11. Caught in the split-tribal blindside that Jonathan orchestrated. Rizo told him he was safe and didn't need to play his Boomerang Idol — went home 4-1 with the idol in his pocket. Jury member #7." },
+            { id: "emily",     ep9Rank: 9,  reasoning: "Voted out Episode 11 (tribal #1). Cirie's Extra Vote play forced a 2-2-2 tie on the original count; Emily lost 2-1 on the revote after Rick played his idol on himself. Jury member #6." },
+            { id: "stephanie", ep9Rank: 7,  reasoning: "Voted out Episode 10. Played her Steal-a-Vote on Rick at tribal — but Rick had just won the MrBeast coin-flip and was immune, so the play whiffed. Eliminated 8-2. Jury member #5." },
+            { id: "christian", ep9Rank: 11, reasoning: "Voted out Episode 9. Failed the 'One in the Urn' Fallon journey puzzle and was forced to cast the first self-vote in Survivor history. Gave his Shot in the Dark to Jonathan; Jonathan voted him out anyway. Eliminated 6-3-2. Jury member #4." },
+            { id: "coach",     ep9Rank: 12, reasoning: "Voted out Episode 8. Four Horsemen alliance fell apart when the plan to target Dee leaked. Played a Shot in the Dark (not safe). Eliminated 11-1-1 in the Double Duo twist. Jury member #2." },
+            { id: "chrissy",   ep9Rank: 13, reasoning: "Voted out Episode 8. Caught in the Double Duo crossfire alongside Coach. Lost her closest ally and was eliminated before she could rebuild. Jury member #3." },
+            { id: "dee",       ep9Rank: 14, reasoning: "Voted out Episode 7. First jury member. Coach's alliance targeted her after she leaked info about Rizo's idol, which turned allies against her." },
+            { id: "kamilla",   ep9Rank: 15, reasoning: "Voted out Episode 6. Blindsided 3-2 in the Blood Moon's orange group when Jonathan flipped to vote with Chrissy and Stephenie." },
+            { id: "genevieve", ep9Rank: 16, reasoning: "Voted out Episode 6. Drew the worst possible Blood Moon group — landing with rival Aubry, who had an idol. Voted out unanimously 4-0." },
+            { id: "colby",     ep9Rank: 17, reasoning: "Voted out Episode 6. Carried his Lost Vote disadvantage and couldn't vote at his own elimination. Emotional exit: 'Find the joy in this game.'" }
         ]
     };
 
@@ -1027,7 +1046,7 @@
             const team = TEAMS[c.team];
             const winPct = getContestantNormalizedOdds(c);
             const myRank = i + 1;
-            const prevRank = entry.ep8Rank || entry.ep7Rank || entry.ep6Rank || entry.ep3Rank;
+            const prevRank = entry.ep9Rank || entry.ep8Rank || entry.ep7Rank || entry.ep6Rank || entry.ep3Rank;
             const diff = prevRank - myRank;
             let movHtml;
             if (diff > 0) {
@@ -1044,7 +1063,7 @@
                     ${movHtml}
                     <div>
                         <div class="rank-player-name" style="color: ${team.color};">${c.name}</div>
-                        <div class="rank-player-meta" style="color: var(--text-muted);">${team.name} &middot; EP8 rank: #${prevRank}</div>
+                        <div class="rank-player-meta" style="color: var(--text-muted);">${team.name} &middot; EP9 rank: #${prevRank}</div>
                         <div class="rank-reasoning">${entry.reasoning}</div>
                     </div>
                     <div class="rank-winpct" style="color: ${isElim ? 'var(--text-muted)' : team.color};">
@@ -1060,7 +1079,7 @@
             <div class="rankings-source">
                 Rankings updated after Episode ${updatedAfterEpisode} (${epDate}) &middot;
                 Based on <a href="${sourceUrl}" target="_blank">${sourceLabel}</a> &middot;
-                Movement &#9650;&#9660; vs. EP8 DK rankings &middot; Win % = normalized odds weight
+                Movement &#9650;&#9660; vs. EP9 DK rankings &middot; Win % = normalized odds weight
             </div>
         `;
     }
